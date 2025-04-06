@@ -23,7 +23,8 @@ CREATE TABLE mangas (
     preco DECIMAL(10,2) NOT NULL,
     estoque INT DEFAULT 0,
     imagem VARCHAR(255),
-    data_publicacao DATE
+    data_publicacao DATE,
+    ativo TINYINT DEFAULT 1
 );
 
 -- 4. Tabela: categorias
