@@ -1,0 +1,52 @@
+:root {
+    --azul-escuro: #213555;
+    --azul-claro: #3E5879;
+    --cafe-com-leite: #D8C4B6;
+    --quase-branco: #F5EFE7;
+}
+
+body {
+    background-color: var(--azul-escuro);
+}
+
+div.input-group-text {
+    padding: 0;
+}
+
+.input-group-text {
+    border: none;
+}
+
+.card {
+    border: none;
+}
+
+#div-preview {
+    padding: 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--cafe-com-leite);
+    border: 1px solid var(--azul-escuro);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    border-right: 1px solid var(--azul-escuro);
+    color: black;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: black;
+}
+
+.select2-container--default .select2-selection--multiple {
+    padding: 5px;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+    vertical-align: sub;
+}
+
+textarea {
+    line-height: normal;
+}
