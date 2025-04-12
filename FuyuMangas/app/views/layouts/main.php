@@ -15,7 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    <!-- Meu CSS Global -->
+    <!-- Meus CSS's Globais -->
+     <link rel="stylesheet" href="../../public/css/cores.css">
     <link rel="stylesheet" href="../../public/css/main.css">
 
     <!-- Meus CSS's -->
@@ -28,7 +29,7 @@
 
 <body>
     <div class="d-flex flex-column min-vh-100">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark mb-4">
             <div class="container">
                 <a class="navbar-brand" href="/">Fuyu Mangas</a>
                 <div class="collapse navbar-collapse">
@@ -45,7 +46,7 @@
         </div>
 
         <footer class="bg-dark text-center text-light mt-auto p-3">
-            <small>Fuyu Mangas &copy; <?= date("Y") ?>. Criado com carinho por Vitor Paduan!</small>
+            <small>Fuyu Mangas &copy; <?= date("Y") ?>. Criado por Vitor Paduan!</small>
         </footer>
     </div>
 

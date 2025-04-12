@@ -1,12 +1,5 @@
-:root {
-    --azul-escuro: #213555;
-    --azul-claro: #3E5879;
-    --cafe-com-leite: #D8C4B6;
-    --quase-branco: #F5EFE7;
-}
-
 body {
-    background-color: var(--azul-escuro);
+    background-color: var(--cinza-noturno);
 }
 
 div.input-group-text {
@@ -26,12 +19,12 @@ div.input-group-text {
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: var(--cafe-com-leite);
-    border: 1px solid var(--azul-escuro);
+    background-color: var(--caramelo-brilho);
+    border: 1px solid var(--cinza-fumacinha);
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-    border-right: 1px solid var(--azul-escuro);
+    border-right: 1px solid var(--cinza-fumacinha);
     color: black;
 }
 
@@ -47,6 +40,51 @@ div.input-group-text {
     vertical-align: sub;
 }
 
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--caramelo-brilho);
+    color: black;
+}
+
 textarea {
     line-height: normal;
+}
+
+.popover-erro {
+    --bs-popover-border-color: var(--caramelo-brilho);
+    --bs-popover-header-bg: var(--caramelo-brilho);
+    --bs-popover-bg: var(--branco-suave);
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: .5rem;
+}
+
+.is-invalido {
+    border: 2px solid var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px 2px var(--caramelo-brilho);
+}
+
+.modal-content {
+    background-color: var(--background-escuro);
+}
+
+.btn-caramelo {
+    background-color: var(--caramelo-brilho);
+}
+
+.btn-caramelo:hover {
+    background-color: var(--caramelo-brilho-hover);
+    color: var(--preto-suave);
+}
+
+.btn-caramelo:active {
+    background-color: var(--caramelo-brilho-hover) !important;
+    color: var(--preto-suave) !important;
+}
+
+.text-caramelo {
+    color: var(--caramelo-brilho);
+}
+
+.form-control:focus {
+    border-color: var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px .25rem var(--caramelo-brilho);
 }

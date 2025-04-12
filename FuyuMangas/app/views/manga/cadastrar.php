@@ -1,5 +1,5 @@
 <div class="container-md text-light">
-    <form action="/manga/salvar" method="POST" enctype="multipart/form-data">
+    <form id="form-cadastrar-manga" action="/manga/salvar" method="POST" enctype="multipart/form-data">
         <h2>Cadastrar Mangá</h2>
 
         <!-- Campo Imagem Capa -->
@@ -87,6 +87,7 @@
 
         <hr>
 
+        <!-- Preview -->
         <div class="row justify-content-center">
             <h3 class="mb-4 text-center">Preview</h3>
             <div class="card mb-3" id="div-preview" style="max-width: 540px;">
@@ -100,7 +101,8 @@
                         <div class="card-body">
                             <h5 class="card-title" id="preview-titulo">Prévia do título</h5>
                             <p class="card-text" id="preview-descricao">Prévia da descrição</p>
-                            <p class="card-text text-body-secondary fs-6" id="preview-categorias">Prévia das categorias</p>
+                            <p class="card-text text-body-secondary fs-6" id="preview-categorias">Prévia das categorias
+                            </p>
                             <p class="card-text d-inline"><small class="text-body-secondary"
                                     id="preview-autor">Autor</small></p>
                             <p class="card-text d-inline"> | </p>
@@ -108,7 +110,8 @@
                                     id="preview-data-lancamento">dd mmm. yyyy</small></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="card-text fs-4 fw-bold text-success mb-0" id="preview-preco">R$00,00</p>
-                                <p class="card-text"><small class="text-body-secondary" id="preview-estoque">Em estoque: <b>0</b></small></p>
+                                <p class="card-text"><small class="text-body-secondary" id="preview-estoque">Estoque
+                                        esgotado!</small></p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +119,35 @@
             </div>
         </div>
 
-        <!-- Botão Enviar -->
-        <button type="submit" class="btn btn-primary">Cadastrar Mangá</button>
+        <hr>
+
+        <!-- Botões Enviar / Cancelar -->
+        <div class="d-flex justify-content-center mb-3">
+            <button type="button" class="btn btn-light mx-2" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">Cancelar</button>
+            <button type="submit" class="btn btn-caramelo mx-2">Cadastrar Mangá</button>
+        </div>
     </form>
+
+    <!-- Modal de Confirmação de Cancelar -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Tem certeza que deseja cancelar?</h1>
+                    <button type="button" class="btn-close text-caramelo" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Se você cancelar agora, <span class="fw-bold text-cafe">todo o cadastro será perdido</span>.</p>
+                    <p class="mb-0">Tem certeza que quer abandonar esse mangá tão promissor?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Não, voltar pro
+                        formulário</button>
+                    <button type="button" class="btn btn-caramelo" onclick="history.back()">Sim, cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
