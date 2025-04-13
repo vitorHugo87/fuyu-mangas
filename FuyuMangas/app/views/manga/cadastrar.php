@@ -1,5 +1,5 @@
 <div class="container-md text-light">
-    <form id="form-cadastrar-manga" action="/manga/salvar" method="POST" enctype="multipart/form-data">
+    <form id="form-cadastrar-manga" action="<?= BASE_URL ?>/manga/salvar" method="POST" enctype="multipart/form-data">
         <h2>Cadastrar Mangá</h2>
 
         <!-- Campo Imagem Capa -->

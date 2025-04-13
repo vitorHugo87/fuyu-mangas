@@ -45,7 +45,7 @@
             <?php require __DIR__ . "/../" . $view . ".php"; ?>
         </div>
 
-        <footer class="bg-dark text-center text-light mt-auto p-3">
+        <footer class="footer text-center text-light mt-auto p-3">
             <small>Fuyu Mangas &copy; <?= date("Y") ?>. Criado por Vitor Paduan!</small>
         </footer>
     </div>

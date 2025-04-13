@@ -28,7 +28,9 @@
         // Salvar os dados enviados
         public function salvar() {
             // Recebe os dados do $_POST e $_FILES, valida, e chama $this->mangaModel->adicionar()
-            // Já já posso te ajudar com isso tbm se quiser!
+            var_dump($_POST);
+            var_dump($_FILES);
+            die("Chegamos aqui no salvar");
         }
 
         // Listar todos os mangás

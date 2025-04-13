@@ -1,5 +1,6 @@
 <?php
-
+    require_once __DIR__ . '/../config/config.php';
+    
 class Controller {
     public function render($view, $dados = []) {
         extract($dados); // transforma os índices do array em variáveis
