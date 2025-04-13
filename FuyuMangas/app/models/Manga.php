@@ -28,15 +28,15 @@
                 $this->db->beginTransaction();
 
                 // Insere o mangá
-                $stmt = $this->db->prepare("INSERT INTO mangas (titulo, autor, editora, paginas, descricao, preco, estoque, imagem) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$dados->titulo, $dados->autor, $dados->editora, $dados->paginas, $dados->descricao, $dados->preco, $dados->estoque, $dados->imagem]);
+                $stmt = $this->db->prepare("INSERT INTO mangas (titulo, autor, editora, paginas, descricao, preco, estoque, imagem, data_publicacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$dados->titulo, $dados->autor, $dados->editora, $dados->paginas, $dados->descricao, $dados->preco, $dados->estoque, $dados->imagem, $dados->dataLancamento]);
 
                 // Pega o ID do mangá recem criado
                 $mangaId = $this->db->lastInsertId();
 
                 // Insere as categorias relacionadas
                 if(!empty($dados->categorias)) {
-                    $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (manga_id, categoria_id) VALUES (?, ?)");
+                    $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (id_manga, id_categoria) VALUES (?, ?)");
                     foreach($dados->categorias as $categoriaId) {
                         $stmtCat->execute([$mangaId, $categoriaId]);
                     }
