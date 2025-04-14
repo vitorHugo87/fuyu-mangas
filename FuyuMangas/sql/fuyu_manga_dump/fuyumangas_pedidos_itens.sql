@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuarios`
+-- Table structure for table `pedidos_itens`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
+DROP TABLE IF EXISTS `pedidos_itens`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
+CREATE TABLE `pedidos_itens` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `senha` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `tipo` enum('cliente','admin') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'cliente',
-  `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
+  `id_pedido` int DEFAULT NULL,
+  `id_manga` int DEFAULT NULL,
+  `quantidade` int DEFAULT NULL,
+  `preco_unitario` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  KEY `id_pedido` (`id_pedido`),
+  KEY `id_manga` (`id_manga`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuarios`
+-- Dumping data for table `pedidos_itens`
 --
 
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+LOCK TABLES `pedidos_itens` WRITE;
+/*!40000 ALTER TABLE `pedidos_itens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedidos_itens` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-13 16:20:53
+-- Dump completed on 2025-04-13 21:16:08
