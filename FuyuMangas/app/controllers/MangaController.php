@@ -1,22 +1,24 @@
 <?php
-    require_once __DIR__ . '/../models/Manga.php';
-    require_once __DIR__ . '/../models/Categoria.php';
+    require_once __DIR__ . '/../models/dao/MangaDAO.php';
+    require_once __DIR__ . '/../models/bean/MangaBean.php';
+    require_once __DIR__ . '/../models/dao/CategoriaDAO.php';
+    require_once __DIR__ . '/../models/bean/CategoriaBean.php';
     require_once __DIR__ . '/../core/Controller.php';
     class MangaController extends Controller {
-        private $mangaModel;
+        private $mangaDAO;
 
         public function __construct() {
-            $this->mangaModel = new Manga();
+            $this->mangaDAO = new MangaDAO();
         }
 
         // Mostra o formulário de cadastro
         public function cadastrar() {
             // Pegar todas as categorias para usar nos checkboxs de categorias
-            $categoriaModel = new Categoria();
-            $categorias = $categoriaModel->listarTodos();
+            $categoriaDAO = new CategoriaDAO();
+            $categorias = $categoriaDAO->listarTodos();
 
             // Ordena as categorias pelo nome
-            usort($categorias, function($a, $b) {return strcmp($a->nome, $b->nome);});
+            usort($categorias, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
 
             // Redireciona para a tela de cadastro de mangás
             $this->render("manga/cadastrar", ["categorias" => $categorias, 
@@ -27,10 +29,9 @@
 
         // Salva os dados enviados
         public function salvar() {
-            // Recebe os dados do $_POST e $_FILES, valida, e chama $this->mangaModel->adicionar()
+            // Recebe os dados do $_POST e $_FILES, valida, e chama $this->mangaDAO->adicionar($manga);
             var_dump($_POST);
             var_dump($_FILES);
-            //die("Chegamos aqui no salvar");
 
             // trim -> Tira os espaços do fim e inicio
             // strtolower -> Transforma tudo em lowercase
@@ -45,6 +46,10 @@
             $estoque = isset($_POST['estoque']) ? (int) $_POST['estoque'] : 0;
             $preco = isset($_POST['preco']) ? round((float) str_replace(',', '.', $_POST['preco']), 2) : 0.0;
             $categorias = $_POST['categorias'] ?? [];
+            $categoriasObj = [];
+            foreach($categorias as $catId) {
+                $categoriasObj[] = new CategoriaBean($catId);
+            }
             
             // Salva a imagem
             if(isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
@@ -68,22 +73,11 @@
                 die('Ops, tivemos um problema com o upload da capa..');
             }
 
-            // Cria um objeto anônimo
-            $mangaDados = (object) [
-                'titulo' => $titulo,
-                'dataLancamento' => $dataLancamento,
-                'autor' => $autor,
-                'editora' => $editora,
-                'descricao' => $descricao,
-                'paginas' => $paginas,
-                'estoque' => $estoque,
-                'preco' => $preco,
-                'imagem' => $caminhoParaBanco,
-                'categorias' => $categorias
-            ];
+            // Cria um objeto MangaBean
+            $manga = new MangaBean(null, $titulo, $autor, $editora, $paginas, $descricao, $preco, $estoque, $dataLancamento, $caminhoParaBanco, 1, $categoriasObj);
 
-            // Passa o objeto para o models/Manga.php
-            $this->mangaModel->adicionar($mangaDados);
+            // Passa o objeto para o models/dao/MangaDao.php
+            $this->mangaDAO->adicionar($manga);
 
             die('Manga Cadastrado com sucesso!');
             // Redireciona para a tela inicial
@@ -92,7 +86,7 @@
 
         // Lista todos os mangás
         public function listar() {
-            $mangas = $this->mangaModel->listarTodos();
+            $mangas = $this->mangaDAO->listarTodos();
             $this->render("manga/listar", ["mangas" => $mangas]);
         }
     }

@@ -1,7 +1,9 @@
 <?php
-    require_once __DIR__ . '/../core/Model.php';
+    require_once __DIR__ . '/../../core/Model.php';
+    require_once __DIR__ . '/../bean/MangaBean.php';
+    require_once __DIR__ . '/../bean/CategoriaBean.php';
 
-    class Manga extends Model {
+    class MangaDAO extends Model {
         // Listar todos os mangás
         public function listarTodos() {
             $stmt = $this->db->query("SELECT * FROM mangas");
@@ -22,23 +24,23 @@
         }
 
         // Adicionar um novo mangá
-        public function adicionar($dados) {
+        public function adicionar(MangaBean $manga) {
             try {
                 // Inicia a transação
                 $this->db->beginTransaction();
 
                 // Insere o mangá
                 $stmt = $this->db->prepare("INSERT INTO mangas (titulo, autor, editora, paginas, descricao, preco, estoque, imagem, data_publicacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$dados->titulo, $dados->autor, $dados->editora, $dados->paginas, $dados->descricao, $dados->preco, $dados->estoque, $dados->imagem, $dados->dataLancamento]);
+                $stmt->execute([$manga->getTitulo(), $manga->getAutor(), $manga->getEditora(), $manga->getPaginas(), $manga->getDescricao(), $manga->getPreco(), $manga->getEstoque(), $manga->getImagem(), $manga->getDataPublicacao()]);
 
                 // Pega o ID do mangá recem criado
                 $mangaId = $this->db->lastInsertId();
 
                 // Insere as categorias relacionadas
-                if(!empty($dados->categorias)) {
+                if(!empty($manga->getCategorias())) {
                     $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (id_manga, id_categoria) VALUES (?, ?)");
-                    foreach($dados->categorias as $categoriaId) {
-                        $stmtCat->execute([$mangaId, $categoriaId]);
+                    foreach($manga->getCategorias() as $categoria) {
+                        $stmtCat->execute([$mangaId, $categoria->getId()]);
                     }
                 }
 
@@ -54,23 +56,23 @@
             }
         }
 
-        public function atualizar($id, $dados) {
+        public function atualizar(MangaBean $manga) {
             try {
                 // Inicia a transação
                 $this->db->beginTransaction();
 
                 // Atualiza os dados principais do mangá
                 $stmt = $this->db->prepare("UPDATE mangas SET titulo = ?, autor = ?, editora = ?, paginas = ?, descricao = ?, preco = ?, estoque = ?, imagem = ?, ativo = ? WHERE id = ?");
-                $stmt->execute([$dados->titulo, $dados->autor, $dados->editora, $dados->paginas, $dados->descricao, $dados->preco, $dados->estoque, $dados->imagem, $dados->ativo, $id]);
+                $stmt->execute([$manga->getTitulo(), $manga->getAutor(), $manga->getEditora(), $manga->getPaginas(), $manga->getDescricao(), $manga->getPreco(), $manga->getEstoque(), $manga->getImagem(), $manga->getAtivo(), $manga->getId()]);
 
                 // Remove categorias antigas
-                $this->db->prepare("DELETE FROM mangas_categorias WHERE manga_id = ?")->execute([$id]);
+                $this->db->prepare("DELETE FROM mangas_categorias WHERE id_manga = ?")->execute([$manga->getId()]);
 
                 // Adiciona novas categorias, se houver
-                if(!empty($dados->categorias)) {
-                    $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (manga_id, categoria_id) VALUES (?, ?)");
-                    foreach($dados->categorias as $categoriaId) {
-                        $stmtCat->execute([$id, $categoriaId]);
+                if(!empty($manga->getCategorias())) {
+                    $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (id_manga, id_categoria) VALUES (?, ?)");
+                    foreach($manga->getCategorias() as $categoria) {
+                        $stmtCat->execute([$manga->getId(), $categoria->getId()]);
                     }
                 }
 

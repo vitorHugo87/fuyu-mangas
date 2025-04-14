@@ -80,7 +80,7 @@
             <label for="categorias" class="form-label">Categorias</label>
             <select id="categorias" name="categorias[]" multiple class="select2" style="width: 100%;">
                 <?php foreach ($categorias as $cat): ?>
-                    <option value="<?= $cat->id ?>"><?= $cat->nome ?></option>
+                    <option value="<?= $cat->getId() ?>"><?= $cat->getNome() ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
