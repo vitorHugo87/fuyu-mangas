@@ -84,13 +84,17 @@
 		public function getDescricao() {
 			return $this->descricao;
 		}
-
+		
 		public function setDescricao($descricao) {
 			$this->descricao = $descricao;
 		}
 
 		public function getPreco() {
 			return $this->preco;
+		}
+
+		public function getPrecoFormatado() {
+			return number_format($this->preco, 2, ',', '');
 		}
 
 		public function setPreco($preco) {
@@ -101,12 +105,34 @@
 			return $this->estoque;
 		}
 
+		public function getEstoqueString() {
+			if($this->estoque == 0) return "Estoque esgotado!";
+			else if($this->estoque <= 50) return "Apenas $this->estoque restantes!";
+			else return "Estoque: $this->estoque";
+		}
+
 		public function setEstoque($estoque) {
 			$this->estoque = $estoque;
 		}
 
 		public function getDataPublicacao() {
 			return $this->dataPublicacao;
+		}
+
+		public function getDataPublicacaoFormatada() {
+			// Ex.: (2024-12-17) para (17 dez. 2024)
+			$date = new DateTime($this->dataPublicacao);
+		
+			$formatter = new IntlDateFormatter(
+				'pt_BR',
+				IntlDateFormatter::LONG,
+				IntlDateFormatter::NONE,
+				'America/Sao_Paulo',
+				IntlDateFormatter::GREGORIAN,
+				"d MMM yyyy"
+			);
+		
+			return $formatter->format($date);
 		}
 
 		public function setDataPublicacao($dataPublicacao) {

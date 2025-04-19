@@ -2,6 +2,7 @@
     require_once __DIR__ . '/../../core/Model.php';
     require_once __DIR__ . '/../bean/MangaBean.php';
     require_once __DIR__ . '/../bean/CategoriaBean.php';
+    require_once __DIR__ . '/../dao/CategoriaDAO.php';
 
     class MangaDAO extends Model {
         // Listar todos os mangás
@@ -13,7 +14,31 @@
         // Listar apenas os mangás ativos
         public function listarTodosAtivos() {
             $stmt = $this->db->query("SELECT * FROM mangas WHERE ativo = 1");
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
+            $mangas = [];
+
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $manga = new MangaBean();
+                $manga->setId($row['id']);
+                $manga->setTitulo($row['titulo']);
+                $manga->setAutor($row['autor']);
+                $manga->setEditora($row['editora']);
+                $manga->setPaginas($row['paginas']);
+                $manga->setDescricao($row['descricao']);
+                $manga->setPreco($row['preco']);
+                $manga->setEstoque($row['estoque']);
+                $manga->setImagem($row['imagem']);
+                $manga->setDataPublicacao($row['data_publicacao']);
+                $manga->setAtivo($row['ativo']);
+                
+                // Categorias
+                $categoriaDAO = new CategoriaDAO();
+                $categorias = $categoriaDAO->buscarPorMangaId($manga->getId());
+                $manga->setCategorias($categorias);
+
+                $mangas[] = $manga;
+            }
+
+            return $mangas;
         }
 
         // Buscar um mangá pelo ID

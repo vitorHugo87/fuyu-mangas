@@ -32,6 +32,22 @@ class CategoriaDAO extends Model {
         return null; // Caso não encontre nenhuma categoria
     }
 
+    public function buscarPorMangaId($mangaId) {
+        $stmt = $this->db->prepare("SELECT c.id, c.nome, c.descricao FROM mangas_categorias mc INNER JOIN categorias c ON c.id = mc.id_categoria WHERE mc.id_manga = ?");
+        $stmt->execute([$mangaId]);
+        $categorias = [];
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $categoria = new CategoriaBean();
+            $categoria->setId($row['id']);
+            $categoria->setNome($row['nome']);
+            $categoria->setDescricao($row['descricao']);
+            $categorias[] = $categoria;
+        }
+
+        return $categorias;
+    }
+
     public function adicionar($nome) {
         $stmt = $this->db->prepare("INSERT INTO categorias (nome) VALUES (?)");
         return $stmt->execute([$nome]);

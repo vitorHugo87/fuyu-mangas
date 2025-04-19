@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: fuyumangas
+-- Host: localhost    Database: fuyumangas
 -- ------------------------------------------------------
--- Server version	9.1.0
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `avaliacoes` (
   `id_usuario` int DEFAULT NULL,
   `id_manga` int DEFAULT NULL,
   `nota` int DEFAULT NULL,
-  `comentario` text COLLATE utf8mb4_general_ci,
+  `comentario` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `data_avaliacao` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-13 21:16:09
+-- Dump completed on 2025-04-19 20:52:33

@@ -86,7 +86,8 @@
 
         // Lista todos os mangás
         public function listar() {
-            $mangas = $this->mangaDAO->listarTodos();
-            $this->render("manga/listar", ["mangas" => $mangas]);
+            $mangas = $this->mangaDAO->listarTodosAtivos();
+            $this->render("manga/listar", ["mangas" => $mangas,
+                "css" => ["/FuyuMangas/FuyuMangas/public/css/manga-index.css"]]);
         }
     }
