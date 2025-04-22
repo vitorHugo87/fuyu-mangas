@@ -107,8 +107,8 @@
 
 		public function getEstoqueString() {
 			if($this->estoque == 0) return "Estoque esgotado!";
-			else if($this->estoque <= 50) return "Apenas $this->estoque restantes!";
-			else return "Estoque: $this->estoque";
+			else if($this->estoque <= 50) return "Apenas <b>$this->estoque</b> restantes!";
+			else return "Estoque: <b>$this->estoque</b>";
 		}
 
 		public function setEstoque($estoque) {

@@ -1,6 +1,11 @@
+body {
+    background-color: var(--cinza-noturno);
+}
+
 .descricao-limitada {
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -10,4 +15,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.card {
+    --bs-card-border-width: 0px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }

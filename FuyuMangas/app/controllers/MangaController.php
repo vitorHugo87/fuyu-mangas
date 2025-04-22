@@ -88,6 +88,6 @@
         public function listar() {
             $mangas = $this->mangaDAO->listarTodosAtivos();
             $this->render("manga/listar", ["mangas" => $mangas,
-                "css" => ["/FuyuMangas/FuyuMangas/public/css/manga-index.css"]]);
+                "css" => ["/FuyuMangas/FuyuMangas/public/css/manga-listar.css"]]);
         }
     }
