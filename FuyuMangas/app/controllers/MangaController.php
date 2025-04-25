@@ -99,6 +99,7 @@
                 // Implantar pagina de erro depois :3
             }
 
-            $this->render("manga/detalhes", ["manga" => $manga]);
+            $this->render("manga/detalhes", ["manga" => $manga,
+                "css" => [BASE_URL . "/css/manga-detalhes.css"]]);
         }
     }

@@ -5,5 +5,30 @@ do manga/listar (quebra de linhas usando CSS ao invés do JS)
 -- MangaController->detalhe() --
 Criar página de erro, caso não encontre o mangá
 
+-- manga/detalhes.php --
+Imagem - Titulo / Data Publicação
+Imagem - Descrição
+Imagem - Preço / Estoque
+Autor - Qtd / Adicionar ao Carrinho
+(Compartilhar / Favoritar / Lista de Desejos) - Calcular Frete
+
+(Clientes que compraram este item também compraram)
+
+Detalhes - Avaliações
+Produtos (Recomendados ou Similares)
+
+(Ao clicar em adicionar ao carrinho exibir pop-up perguntando se quer
+continuar comprando ou finalizar compra)
+
+
 -- DB --
 Criar tabela Endereço
+Criar Tabela Autor (Id, nome, fotoPerfil) - Atribuir ID do autor na tabela manga
+Alterar Tabela manga para incluir nome alternativo
+Ex.: (Shuumatsu no Valkyrie / Record of Ragnarok)
+
+-- Mangas Para Cadastrar --
+Monster Musume
+Dragon Maid
+Record of Ragnarok
+Nichijou
