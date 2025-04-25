@@ -45,7 +45,29 @@
         public function buscarPorId($id) {
             $stmt = $this->db->prepare("SELECT * FROM mangas WHERE id = ?");
             $stmt->execute([$id]);
-            return $stmt->fetch(PDO::FETCH_OBJ);
+            
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if(!$row) return null;
+
+            $manga = new MangaBean();
+            $manga->setId($row['id']);
+            $manga->setTitulo($row['titulo']);
+            $manga->setAutor($row['autor']);
+            $manga->setEditora($row['editora']);
+            $manga->setPaginas($row['paginas']);
+            $manga->setDescricao($row['descricao']);
+            $manga->setPreco($row['preco']);
+            $manga->setEstoque($row['estoque']);
+            $manga->setImagem($row['imagem']);
+            $manga->setDataPublicacao($row['data_publicacao']);
+            $manga->setAtivo($row['ativo']);
+
+            $catDao = new CategoriaDAO();
+            $categorias = $catDao->buscarPorMangaId($id);
+            $manga->setCategorias($categorias);
+
+            return $manga;
         }
 
         // Adicionar um novo mangá

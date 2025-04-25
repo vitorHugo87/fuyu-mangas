@@ -1,0 +1,9 @@
+-- Cadastro de Manga --
+* Na tela de cadastro, mudar o preview para ficar da mesma forma
+do manga/listar (quebra de linhas usando CSS ao invés do JS)
+
+-- MangaController->detalhe() --
+Criar página de erro, caso não encontre o mangá
+
+-- DB --
+Criar tabela Endereço

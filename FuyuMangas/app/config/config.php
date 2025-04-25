@@ -6,4 +6,4 @@
     define('DB_PASS', '');
 
     // Centraliza a BASE_URL
-    define('BASE_URL', '/FuyuMangas/FuyuMangas/public');
+    define('BASE_URL', 'http://localhost/FuyuMangas/FuyuMangas/public');

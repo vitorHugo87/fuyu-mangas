@@ -6,32 +6,31 @@
     require_once __DIR__ . '/../core/Controller.php';
     class MangaController extends Controller {
         private $mangaDAO;
+        private $categoriaDAO;
 
         public function __construct() {
             $this->mangaDAO = new MangaDAO();
+            $this->categoriaDAO = new CategoriaDAO();
         }
 
         // Mostra o formulário de cadastro
         public function cadastrar() {
-            // Pegar todas as categorias para usar nos checkboxs de categorias
-            $categoriaDAO = new CategoriaDAO();
-            $categorias = $categoriaDAO->listarTodos();
+            // Pega todas as categorias para usar nos checkboxs de categorias
+            $categorias = $this->categoriaDAO->listarTodos();
 
             // Ordena as categorias pelo nome
             usort($categorias, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
 
             // Redireciona para a tela de cadastro de mangás
             $this->render("manga/cadastrar", ["categorias" => $categorias, 
-                "css" =>["/FuyuMangas/FuyuMangas/public/css/manga-cadastrar.css"],
-                "js" => ["/FuyuMangas/FuyuMangas/public/js/manga-cadastrar.js"]
+                "css" =>[BASE_URL . "/css/manga-cadastrar.css"],
+                "js" => [BASE_URL . "/js/manga-cadastrar.js"]
             ]);
         }
 
         // Salva os dados enviados
         public function salvar() {
             // Recebe os dados do $_POST e $_FILES, valida, e chama $this->mangaDAO->adicionar($manga);
-            var_dump($_POST);
-            var_dump($_FILES);
 
             // trim -> Tira os espaços do fim e inicio
             // strtolower -> Transforma tudo em lowercase
@@ -88,6 +87,18 @@
         public function listar() {
             $mangas = $this->mangaDAO->listarTodosAtivos();
             $this->render("manga/listar", ["mangas" => $mangas,
-                "css" => ["/FuyuMangas/FuyuMangas/public/css/manga-listar.css"]]);
+                "css" => [BASE_URL . "/css/manga-listar.css"]]);
+        }
+
+        public function detalhe($mangaId) {
+            // Busca o mangá pelo ID
+            $manga = $this->mangaDAO->buscarPorId($mangaId);
+
+            // Se não encontrar, mostra pagina de erro
+            if(!$manga) {
+                // Implantar pagina de erro depois :3
+            }
+
+            $this->render("manga/detalhes", ["manga" => $manga]);
         }
     }
