@@ -3,6 +3,8 @@
     require_once __DIR__ . '/../bean/MangaBean.php';
     require_once __DIR__ . '/../bean/CategoriaBean.php';
     require_once __DIR__ . '/../dao/CategoriaDAO.php';
+    require_once __DIR__ . '/AutorDAO.php';
+    require_once __Dir__ . '/ColecaoDAO.php';
 
     class MangaDAO extends Model {
         // Listar todos os mangás
@@ -19,8 +21,8 @@
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $manga = new MangaBean();
                 $manga->setId($row['id']);
-                $manga->setTitulo($row['titulo']);
-                $manga->setAutor($row['autor']);
+                $manga->setTituloJap($row['titulo_jap']);
+                $manga->setTituloEng($row['titulo_eng']);
                 $manga->setEditora($row['editora']);
                 $manga->setPaginas($row['paginas']);
                 $manga->setDescricao($row['descricao']);
@@ -28,8 +30,20 @@
                 $manga->setEstoque($row['estoque']);
                 $manga->setImagem($row['imagem']);
                 $manga->setDataPublicacao($row['data_publicacao']);
+                $manga->setFaixaEtaria($row['faixa_etaria']);
+                $manga->setIdioma($row['idioma']);
                 $manga->setAtivo($row['ativo']);
                 
+                // Autor
+                $autorDAO = new AutorDAO();
+                $autor = $autorDAO->buscarPorId($row['id_autor']);
+                $manga->setAutor($autor);
+
+                // Coleção
+                $colecaoDAO = new ColecaoDAO();
+                $colecao = $colecaoDAO->buscarPorId($row['id_colecao']);
+                $manga->setColecao($colecao);
+
                 // Categorias
                 $categoriaDAO = new CategoriaDAO();
                 $categorias = $categoriaDAO->buscarPorMangaId($manga->getId());
@@ -52,8 +66,8 @@
 
             $manga = new MangaBean();
             $manga->setId($row['id']);
-            $manga->setTitulo($row['titulo']);
-            $manga->setAutor($row['autor']);
+            $manga->setTituloJap($row['titulo_jap']);
+            $manga->setTituloEng($row['titulo_eng']);
             $manga->setEditora($row['editora']);
             $manga->setPaginas($row['paginas']);
             $manga->setDescricao($row['descricao']);
@@ -61,10 +75,23 @@
             $manga->setEstoque($row['estoque']);
             $manga->setImagem($row['imagem']);
             $manga->setDataPublicacao($row['data_publicacao']);
+            $manga->setFaixaEtaria($row['faixa_etaria']);
+            $manga->setIdioma($row['idioma']);
             $manga->setAtivo($row['ativo']);
+            
+            // Autor
+            $autorDAO = new AutorDAO();
+            $autor = $autorDAO->buscarPorId($row['id_autor']);
+            $manga->setAutor($autor);
 
-            $catDao = new CategoriaDAO();
-            $categorias = $catDao->buscarPorMangaId($id);
+            // Coleção
+            $colecaoDAO = new ColecaoDAO();
+            $colecao = $colecaoDAO->buscarPorId($row['id_colecao']);
+            $manga->setColecao($colecao);
+
+            // Categorias
+            $categoriaDAO = new CategoriaDAO();
+            $categorias = $categoriaDAO->buscarPorMangaId($manga->getId());
             $manga->setCategorias($categorias);
 
             return $manga;

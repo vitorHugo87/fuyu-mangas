@@ -14,13 +14,13 @@
 
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $manga->getTitulo() ?></h5>
+                                <h5 class="card-title"><?= $manga->getTituloEng() ?></h5>
                                 <p class="card-text descricao-limitada"><?= $manga->getDescricao() ?></p>
                                 <p class="card-text text-body-secondary fs-6 categoria-truncada">
                                     <?= implode(', ', array_map(fn($cat) => $cat->getNome(), $manga->getCategorias())); ?>
                                 </p>
                                 <p class="card-text d-inline"><small
-                                        class="text-body-secondary"><?= $manga->getAutor() ?></small></p>
+                                        class="text-body-secondary"><?= $manga->getAutor()->getNome() ?></small></p>
                                 <p class="card-text d-inline"> | </p>
                                 <p class="card-text d-inline"><small
                                         class="text-body-secondary"><?= $manga->getDataPublicacaoFormatada() ?></small></p>

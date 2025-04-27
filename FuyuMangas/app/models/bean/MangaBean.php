@@ -1,34 +1,46 @@
 <?php
+	require_once __DIR__ . '/AutorBean.php';
+	require_once __DIR__ . '/ColecaoBean.php';
     class MangaBean {
-        private $id;
-        private $titulo;
-        private $autor;
-        private $editora;
-        private $paginas;
-        private $descricao;
-        private $preco;
-        private $estoque;
-        private $dataPublicacao;
-        private $imagem;
-        private $ativo;
-        private $categorias;
+        private ?int $id;
+        private string $tituloJap;
+		private string $tituloEng;
+        private ?AutorBean $autor;
+		private ?ColecaoBean $colecao;
+        private string $editora;
+        private int $paginas;
+        private string $descricao;
+        private float $preco;
+        private int $estoque;
+        private string $dataPublicacao;
+		private string $faixaEtaria;
+		private string $idioma;
+        private string $imagem;
+        private bool $ativo;
+        private array $categorias;
 
         public function __construct(
             $id = null, 
-            $titulo = '', 
-            $autor = '', 
-            $editora = '', 
-            $paginas = 0, 
-            $descricao = '', 
-            $preco = 0.0, 
+            $tituloJap = '', 
+			$tituloEng = '',
+            $autor = null, 
+			$colecao = null,
+            $editora = '',
+            $paginas = 0,
+            $descricao = '',
+            $preco = 0.0,
             $estoque = 0,
             $dataPublicacao = '',
+			$faixaEtaria = '',
+			$idioma = '',
             $imagem = '',
-            $ativo = 1,
+            $ativo = true,
             $categorias = []
         ) {
             $this->id = $id;
-            $this->titulo = $titulo;
+            $this->tituloJap = $tituloJap;
+			$this->tituloEng = $tituloEng;
+			$this->colecao = $colecao;
             $this->autor = $autor;
             $this->editora = $editora;
             $this->paginas = $paginas;
@@ -36,86 +48,104 @@
             $this->preco = $preco;
             $this->estoque = $estoque;
             $this->dataPublicacao = $dataPublicacao;
+			$this->faixaEtaria = $faixaEtaria;
+			$this->idioma = $idioma;
             $this->imagem = $imagem;
             $this->ativo = $ativo;
             $this->categorias = $categorias;
         }
 
-		public function getId() {
+		public function getId(): ?int {
 			return $this->id;
 		}
 
-		public function setId($id) {
+		public function setId(?int $id): void {
 			$this->id = $id;
 		}
 
-		public function getTitulo() {
-			return $this->titulo;
+		public function getTituloJap(): string {
+			return $this->tituloJap;
 		}
 
-		public function setTitulo($titulo) {
-			$this->titulo = $titulo;
+		public function setTituloJap(string $tituloJap): void {
+			$this->tituloJap = $tituloJap;
 		}
 
-		public function getAutor() {
+		public function getTituloEng(): string {
+			return $this->tituloEng;
+		}
+
+		public function setTituloEng(string $tituloEng): void {
+			$this->tituloEng = $tituloEng;
+		}
+
+		public function getAutor(): ?AutorBean {
 			return $this->autor;
 		}
 
-		public function setAutor($autor) {
+		public function setAutor(?AutorBean $autor): void {
 			$this->autor = $autor;
 		}
 
-		public function getEditora() {
+		public function getColecao(): ?ColecaoBean {
+			return $this->colecao;
+		}
+
+		public function setColecao(?ColecaoBean $colecao): void {
+			$this->colecao = $colecao;
+		}
+
+		public function getEditora(): string {
 			return $this->editora;
 		}
 
-		public function setEditora($editora) {
+		public function setEditora(string $editora): void {
 			$this->editora = $editora;
 		}
 
-		public function getPaginas() {
+		public function getPaginas(): int {
 			return $this->paginas;
 		}
 
-		public function setPaginas($paginas) {
+		public function setPaginas(int $paginas): void {
 			$this->paginas = $paginas;
 		}
 
-		public function getDescricao() {
+		public function getDescricao(): string {
 			return $this->descricao;
 		}
 		
-		public function setDescricao($descricao) {
+		public function setDescricao(string $descricao): void {
 			$this->descricao = $descricao;
 		}
 
-		public function getPreco() {
+		public function getPreco(): float {
 			return $this->preco;
 		}
 
-		public function getPrecoFormatado() {
+		public function getPrecoFormatado(): string {
 			return number_format($this->preco, 2, ',', '');
 		}
 
-		public function setPreco($preco) {
+		public function setPreco(float $preco): void {
 			$this->preco = $preco;
 		}
 
-		public function getEstoque() {
+		public function getEstoque(): int {
 			return $this->estoque;
 		}
 
-		public function getEstoqueString() {
+		public function getEstoqueString(): string {
 			if($this->estoque == 0) return "Estoque esgotado!";
 			else if($this->estoque <= 50) return "Apenas <b>$this->estoque</b> restantes!";
 			else return "Estoque: <b>$this->estoque</b>";
 		}
 
-		public function setEstoque($estoque) {
+		public function setEstoque(int $estoque): void {
 			$this->estoque = $estoque;
 		}
 
-		public function getDataPublicacao() {
+		public function getDataPublicacao(): string {
 			return $this->dataPublicacao;
 		}
 
@@ -135,31 +165,51 @@
 			return $formatter->format($date);
 		}
 
-		public function setDataPublicacao($dataPublicacao) {
+		public function setDataPublicacao(string $dataPublicacao): void {
 			$this->dataPublicacao = $dataPublicacao;
 		}
 
-		public function getImagem() {
+		public function getImagem(): string {
 			return $this->imagem;
 		}
 
-		public function setImagem($imagem) {
+		public function setImagem(string $imagem): void {
 			$this->imagem = $imagem;
 		}
 
-		public function getAtivo() {
+		public function getFaixaEtaria(): string {
+			return $this->faixaEtaria;
+		}
+
+		public function getFaixaEtariaFormatada(): string {
+			return ($this->faixaEtaria == "Livre") ? $this->faixaEtaria : "+$this->faixaEtaria anos";
+		}
+
+		public function setFaixaEtaria(string $faixaEtaria): void {
+			$this->faixaEtaria = $faixaEtaria;
+		}
+
+		public function getIdioma(): string {
+			return $this->idioma;
+		}
+
+		public function setIdioma(string $idioma): void {
+			$this->idioma = $idioma;
+		}
+
+		public function getAtivo(): bool {
 			return $this->ativo;
 		}
 
-		public function setAtivo($ativo) {
+		public function setAtivo(bool $ativo): void {
 			$this->ativo = $ativo;
 		}
 
-		public function getCategorias() {
+		public function getCategorias(): array {
 			return $this->categorias;
 		}
 
-		public function setCategorias($categorias) {
+		public function setCategorias(array $categorias): void {
 			$this->categorias = $categorias;
 		}
     }

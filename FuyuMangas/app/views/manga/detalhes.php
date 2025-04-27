@@ -2,8 +2,8 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Início</a></li>
-            <li class="breadcrumb-item"><a href="#">One Punch Man</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><?= $manga->getTitulo() ?></li>
+            <li class="breadcrumb-item"><a href="#"><?= $manga->getColecao()->getNome() ?></a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?= $manga->getTituloEng() ?></li>
         </ol>
     </nav>
 
@@ -23,7 +23,7 @@
                         style="width: 50px; height: 50px; object-fit: cover;">
                     <div>
                         <p class="fw-bold mb-1 mb-0">Autor</p>
-                        <p class="mb-0"><?= $manga->getAutor() ?></p>
+                        <p class="mb-0"><?= $manga->getAutor()->getNome() ?></p>
                     </div>
                 </a>
             </div>
@@ -34,7 +34,7 @@
         <!-- Informações Basicas / Adicionar ao Carrinho -->
         <div class="col-md-9 d-flex flex-column">
             <div class="d-inline-flex">
-                <h3><?= $manga->getTitulo() ?></h3>
+                <h3><?= $manga->getTituloEng() ?></h3>
                 <p class="ms-2 mb-0 align-self-center"><small>- <?= $manga->getDataPublicacaoFormatada() ?></small></p>
             </div>
             <div class="d-inline-flex">
@@ -72,14 +72,14 @@
                         <p class="mb-0 fw-semibold">Faixa Etária</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/warning.svg"
                             alt="">
-                        <p class="mb-0">+12 anos</p>
+                        <p class="mb-0"><?= $manga->getFaixaEtariaFormatada() ?></p>
                     </div>
 
                     <div class="text-center p-2 me-3 rounded-2 info-block">
                         <p class="mb-0 fw-semibold">Idioma</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/translate.svg"
                             alt="">
-                        <p class="mb-0">Português</p>
+                        <p class="mb-0"><?= $manga->getIdioma() ?></p>
                     </div>
                 </div>
             </div>
