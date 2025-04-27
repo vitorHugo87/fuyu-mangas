@@ -100,6 +100,7 @@
             }
 
             $this->render("manga/detalhes", ["manga" => $manga,
-                "css" => [BASE_URL . "/css/manga-detalhes.css"]]);
+                "css" => [BASE_URL . "/css/manga-detalhes.css"],
+                "js" => [BASE_URL . "/js/manga-detalhes.js"]]);
         }
     }

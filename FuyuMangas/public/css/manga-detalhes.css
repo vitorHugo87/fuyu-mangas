@@ -1,3 +1,123 @@
 body {
     background-color: var(--cinza-noturno);
 }
+
+li.breadcrumb-item.active {
+    color: white;
+}
+
+li.breadcrumb-item::before {
+    color: var(--caramelo-brilho) !important;
+}
+
+.breadcrumb-item a {
+    color: var(--caramelo-brilho);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--caramelo-brilho-hover);
+    text-decoration: underline;
+}
+
+#link-avaliacoes {
+    text-decoration: none;
+    color: var(--caramelo-brilho);
+}
+
+#link-avaliacoes:hover {
+    text-decoration: underline;
+    color: var(--caramelo-brilho-hover);
+}
+
+#desc-container {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#link-autor {
+    background-color: rgba(79, 92, 122, 0.3);
+    color: var(--caramelo-brilho);
+    border-radius: var(--bs-border-radius);
+    transition: 0.5s;
+}
+
+#link-autor:hover {
+    background-color: rgba(79, 92, 122, 0.5);
+    color: var(--caramelo-brilho-hover);
+    border-radius: 0px;
+}
+
+#categorias {
+    list-style: none;
+}
+
+#categorias li:not(:last-child) {
+    margin-right: 10px;
+}
+
+#categorias li a {
+    background-color: var(--caramelo-brilho);
+    text-decoration: none;
+    color: black;
+}
+
+#categorias li a:hover {
+    background-color: var(--caramelo-brilho-hover);
+    text-decoration: underline;
+}
+
+.input-qtd {
+    border-radius: var(--bs-border-radius);
+    max-width: 100px;
+}
+
+/* Remove as setinhas do input type=number da quantidade (estilo padrão) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#quantidade:focus {
+    box-shadow: none;
+}
+
+.btns-qtd {
+    background-color: rgba(79, 92, 122, 0.15);
+}
+
+.btns-qtd:hover,
+.btns-qtd:active,
+.btns-qtd:focus-visible {
+    background-color: rgba(79, 92, 122, 0.3) !important;
+    color: black !important;
+    border-color: transparent !important;
+}
+
+.icon-add-cart {
+    filter: invert(1);
+}
+
+.svg-invert {
+    filter: invert(1);
+}
+
+.small-svg {
+    width: 30px;
+    height: 30px;
+}
+
+.info-block {
+    width: 100px;
+    background-color: rgba(79, 92, 122, 0.3);
+    transition: 0.5s;
+}
+
+.info-block:hover {
+    background-color: rgba(79, 92, 122, 0.7);
+}
