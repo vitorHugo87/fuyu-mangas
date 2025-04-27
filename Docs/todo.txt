@@ -25,17 +25,17 @@ Quando clicar em uma categoria, redirecionar para manga/listar com a categoria
 como parametro
 
 -- DB --
-Criar tabela Endereço
+//* Criar tabela Endereço
 
-Criar Tabela Autor (Id, nome, fotoPerfil) - Atribuir ID do autor na tabela manga
+//* Criar Tabela Autor (Id, nome, fotoPerfil) - Atribuir ID do autor na tabela manga
 
-Alterar Tabela manga para incluir nome alternativo
-Ex.: (Shuumatsu no Valkyrie / Record of Ragnarok)
+//* Alterar Tabela manga para incluir nome alternativo
+Ex.: (Shuumatsu no Valkyrie / Record of Ragnarok) -> titulo_jap / titulo_eng
 
-Incluir na Tabela Manga campos -> faixa_etaria, idioma
+//* Incluir na Tabela Manga campos -> faixa_etaria, idioma
 
-Criar tabela colecao (id, nome)
-Alterar tabela manga para incluir id_colecao
+//* Criar tabela colecao (id, nome)
+//* Alterar tabela manga para incluir id_colecao
 
 -- Mangas Para Cadastrar --
 Monster Musume

@@ -2,7 +2,7 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Início</a></li>
-            <li class="breadcrumb-item"><a href="#">Coleção</a></li>
+            <li class="breadcrumb-item"><a href="#">One Punch Man</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?= $manga->getTitulo() ?></li>
         </ol>
     </nav>
@@ -55,28 +55,28 @@
             <div>
                 <div class="d-flex mb-2">
                     <div class="text-center p-2 rounded-2 me-3 info-block">
-                        <p class="mb-0">Páginas</p>
+                        <p class="mb-0 fw-semibold">Páginas</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/magazine.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getPaginas() ?></p>
                     </div>
 
                     <div class="text-center p-2 me-3 rounded-2 info-block">
-                        <p class="mb-0">Editora</p>
+                        <p class="mb-0 fw-semibold">Editora</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/building.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getEditora() ?></p>
                     </div>
 
                     <div class="text-center p-2 me-3 rounded-2 info-block">
-                        <p class="mb-0">Faixa Etária</p>
+                        <p class="mb-0 fw-semibold">Faixa Etária</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/warning.svg"
                             alt="">
                         <p class="mb-0">+12 anos</p>
                     </div>
 
                     <div class="text-center p-2 me-3 rounded-2 info-block">
-                        <p class="mb-0">Idioma</p>
+                        <p class="mb-0 fw-semibold">Idioma</p>
                         <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/translate.svg"
                             alt="">
                         <p class="mb-0">Português</p>
