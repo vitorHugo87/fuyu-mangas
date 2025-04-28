@@ -10,33 +10,71 @@
 
         <div class="row">
 
-            <!-- Campo Titulo -->
+            <!-- Campo Titulo Inglês -->
             <div class="col-md-8 mb-3">
-                <label for="titulo" class="form-label">Titulo</label>
-                <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Ex.: Initial D - Vol. 1">
+                <label for="titulo_eng" class="form-label">Titulo Inglês</label>
+                <input type="text" class="form-control" name="titulo_eng" id="titulo_eng"
+                    placeholder="Ex.: Initial D - Vol. 1">
+            </div>
+
+            <!-- Campo Idioma -->
+            <div class="col-md-2 mb-3">
+                <label for="idioma" class="form-label">Idioma</label>
+                <input type="text" class="form-control" name="idioma" id="idioma" placeholder="Ex.: Português">
             </div>
 
             <!-- Campo Lançamento -->
-            <div class="col-md-4 mb-3">
-                <label for="data_lancamento" class="form-label">Data Lançamento</label>
-                <input type="date" class="form-control" name="data_lancamento" id="data-lancamento">
+            <div class="col-md-2 mb-3">
+                <label for="data_publicacao" class="form-label">Data Publicação</label>
+                <input type="date" class="form-control" name="data_publicacao" id="data_publicacao">
             </div>
 
         </div>
 
-        <!-- Linha com Autor / Editora -->
+        <!-- Linha com Titulo Japones / Coleção -->
+        <div class="row">
+
+            <!-- Campo Titulo Japonês -->
+            <div class="col-md-8 mb-3">
+                <label for="titulo_jap" class="form-label">Titulo Japonês</label>
+                <input type="text" class="form-control" name="titulo_jap" id="titulo_jap"
+                    placeholder="Ex.: Initial D - Vol. 1">
+            </div>
+
+            <!-- Campo Coleção -->
+            <div class="col-md-4 mb-3">
+                <label for="colecao" class="form-label">Coleção</label>
+                <input type="text" class="form-control" name="colecao" id="colecao" placeholder="Ex.: Initial D">
+            </div>
+
+        </div>
+
+        <!-- Linha com Autor / Editora / Faixa Etária -->
         <div class="row">
 
             <!-- Campo Autor -->
-            <div class="col-lg-6 col-md-4 mb-3">
+            <div class="col-lg-5 col-md-4 mb-3">
                 <label for="autor" class="form-label">Autor</label>
                 <input type="text" class="form-control" name="autor" id="autor" placeholder="Ex.: Shuichi Shigeno">
             </div>
 
             <!-- Campo Editora -->
-            <div class="col-lg-6 col-md-4 mb-3">
+            <div class="col-lg-5 col-md-4 mb-3">
                 <label for="editora" class="form-label">Editora</label>
                 <input type="text" class="form-control" name="editora" id="editora" placeholder="Ex.: Panini">
+            </div>
+
+            <!-- Campo Faixa Etária -->
+            <div class="col-lg-2 col-md-4 mb-3">
+                <label for="faixa_etaria" class="form-label">Faixa Etária</label>
+                <select class="select2" id="faixa_etaria" name="faixa_etaria" style="width: 100%;">
+                    <option value="Livre" selected>Livre</option>
+                    <option value="10">+10</option>
+                    <option value="12">+12</option>
+                    <option value="14">+14</option>
+                    <option value="16">+16</option>
+                    <option value="18">+18</option>
+                </select>
             </div>
 
         </div>
@@ -99,15 +137,15 @@
 
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title" id="preview-titulo">Prévia do título</h5>
-                            <p class="card-text" id="preview-descricao">Prévia da descrição</p>
-                            <p class="card-text text-body-secondary fs-6" id="preview-categorias">Prévia das categorias
+                            <h5 class="card-title" id="preview_titulo_eng">Prévia do título</h5>
+                            <p class="card-text descricao-limitada" id="preview-descricao">Prévia da descrição</p>
+                            <p class="card-text text-body-secondary fs-6 categoria-truncada" id="preview-categorias">Prévia das categorias
                             </p>
                             <p class="card-text d-inline"><small class="text-body-secondary"
                                     id="preview-autor">Autor</small></p>
                             <p class="card-text d-inline"> | </p>
                             <p class="card-text d-inline"><small class="text-body-secondary"
-                                    id="preview-data-lancamento">dd mmm. yyyy</small></p>
+                                    id="preview_data_publicacao">dd mmm. yyyy</small></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <p class="card-text fs-4 fw-bold text-success mb-0" id="preview-preco">R$00,00</p>
                                 <p class="card-text"><small class="text-body-secondary" id="preview-estoque">Estoque
@@ -136,10 +174,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Tem certeza que deseja cancelar?</h1>
-                    <button type="button" class="btn-close text-caramelo" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close text-caramelo" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="mb-0">Se você cancelar agora, <span class="fw-bold text-cafe">todo o cadastro será perdido</span>.</p>
+                    <p class="mb-0">Se você cancelar agora, <span class="fw-bold text-cafe">todo o cadastro será
+                            perdido</span>.</p>
                     <p class="mb-0">Tem certeza que quer abandonar esse mangá tão promissor?</p>
                 </div>
                 <div class="modal-footer">

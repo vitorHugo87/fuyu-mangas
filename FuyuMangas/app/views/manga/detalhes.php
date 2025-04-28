@@ -34,11 +34,14 @@
         <!-- Informações Basicas / Adicionar ao Carrinho -->
         <div class="col-md-9 d-flex flex-column">
             <div class="d-inline-flex">
-                <h3><?= $manga->getTituloEng() ?></h3>
+                <h3 class="mb-0"><?= $manga->getTituloEng() ?></h3>
                 <p class="ms-2 mb-0 align-self-center"><small>- <?= $manga->getDataPublicacaoFormatada() ?></small></p>
             </div>
-            <div class="d-inline-flex">
-                <p class="fw-bold">4,7 <span class="fw-normal">★★★★☆</span></p>
+
+            <p class="mb-0"><small><?= $manga->getTituloJap() ?></small></p>
+
+            <div class="d-inline-flex mb-1">
+                <p class="fw-bold mb-0">4,7 <span class="fw-normal">★★★★☆</span></p>
                 <a href="#" class="ms-2 fw-light" id="link-avaliacoes">(44 Avaliações)</a>
             </div>
             <div id="desc-container" class="mb-3">
@@ -82,10 +85,11 @@
                         <p class="mb-0"><?= $manga->getIdioma() ?></p>
                     </div>
                 </div>
+                <hr>
             </div>
 
             <div class="row mt-auto">
-                <hr>
+
                 <div class="col-md-5">
                     <div class="d-flex w-100 align-items-center mb-3">
                         <h2 class="mb-0">R$<?= $manga->getPrecoFormatado() ?></h2>

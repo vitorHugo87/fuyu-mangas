@@ -1,6 +1,15 @@
+-- !IMPORTANTE --
+-- !IMPORTANTE --
+-- !IMPORTANTE --
+
+<<<Arrumar o metodo de cadastrar manga no MangaDAO e no MangaController>>>
+
+-- !FIM IMPORTANTE --
+-- !FIM IMPORTANTE --
+-- !FIM IMPORTANTE --
+
 -- Cadastro de Manga --
-* Na tela de cadastro, mudar o preview para ficar da mesma forma
-do manga/listar (quebra de linhas usando CSS ao invés do JS)
+Refatorar o metodo de verificar se os campos foram preenchidos no manga-cadastrar.js
 
 -- MangaController->detalhe() --
 Criar página de erro, caso não encontre o mangá
@@ -25,17 +34,6 @@ Quando clicar em uma categoria, redirecionar para manga/listar com a categoria
 como parametro
 
 -- DB --
-//* Criar tabela Endereço
-
-//* Criar Tabela Autor (Id, nome, fotoPerfil) - Atribuir ID do autor na tabela manga
-
-//* Alterar Tabela manga para incluir nome alternativo
-Ex.: (Shuumatsu no Valkyrie / Record of Ragnarok) -> titulo_jap / titulo_eng
-
-//* Incluir na Tabela Manga campos -> faixa_etaria, idioma
-
-//* Criar tabela colecao (id, nome)
-//* Alterar tabela manga para incluir id_colecao
 
 -- Mangas Para Cadastrar --
 Monster Musume

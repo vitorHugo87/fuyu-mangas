@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
         placeholder: "Selecione as categorias",
         allowClear: true
     });
+
+    $('#faixa_etaria').select2({
+        minimumResultsForSearch: Infinity // Remove a barrinha de busca se não quiser
+    });
 });
 
 // Inicializa Popovers do Bootstrap
@@ -29,21 +33,21 @@ document.getElementById("imagem").addEventListener("change", function (event) {
 
 // Linka os campos de input com o preview
 document.addEventListener("DOMContentLoaded", function () {
-    // Input do Titulo
-    const inputTitulo = document.getElementById('titulo');
-    const previewTitulo = document.getElementById('preview-titulo');
+    // Input do Titulo Inglês
+    const inputTituloEng = document.getElementById('titulo_eng');
+    const previewTituloEng = document.getElementById('preview_titulo_eng');
 
-    inputTitulo.addEventListener('input', function () {
-        const valor = inputTitulo.value.trim();
-        previewTitulo.textContent = valor !== '' ? valor : 'Prévia do título';
+    inputTituloEng.addEventListener('input', function () {
+        const valor = inputTituloEng.value.trim();
+        previewTituloEng.textContent = valor !== '' ? valor : 'Prévia do título';
     });
 
     // Input da data de lançamento
-    const inputDataLancamento = document.getElementById('data-lancamento');
-    const previewDataLancamento = document.getElementById('preview-data-lancamento');
+    const inputDataPublicacao = document.getElementById('data_publicacao');
+    const previewDataPublicacao = document.getElementById('preview_data_publicacao');
 
-    inputDataLancamento.addEventListener('input', function () {
-        const valor = inputDataLancamento.value;
+    inputDataPublicacao.addEventListener('input', function () {
+        const valor = inputDataPublicacao.value;
         if (valor) {
             const partes = valor.split('-');
             const ano = parseInt(partes[0], 10);
@@ -55,9 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const diaFormatado = dia.toString().padStart(2, '0');
             const mesAbreviado = data.toLocaleString('pt-BR', { month: 'short' });
             const dataFormatada = `${diaFormatado} ${mesAbreviado} ${ano}`;
-            previewDataLancamento.textContent = dataFormatada;
+            previewDataPublicacao.textContent = dataFormatada;
         } else {
-            previewDataLancamento.textContent = 'dd mmm. yyyy';
+            previewDataPublicacao.textContent = 'dd mmm. yyyy';
         }
     });
 
@@ -76,20 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inputDesc.addEventListener('input', function () {
         let valor = inputDesc.value.trim();
-
-        if (valor.length > 135) {
-            // Corta no máximo até 80 caracteres
-            let cortado = valor.slice(0, 135);
-
-            // Garante que não quebra no meio da palavra
-            let ultimoEspaco = cortado.lastIndexOf(' ');
-            if (ultimoEspaco > 0) {
-                cortado = cortado.slice(0, ultimoEspaco);
-            }
-
-            valor = cortado + "...";
-        }
-
         previewDesc.textContent = (valor !== '') ? valor : 'Prévia da descrição';
     });
 
@@ -119,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         $('#categorias').on('change', function () {
             const selecionadas = $(this).select2('data').map(item => item.text);
-            const previewTexto = selecionadas.slice(0, 4).join(', ') + (selecionadas.length > 4 ? '...' : '');
+            const previewTexto = selecionadas.slice(0).join(', ');
 
             $('#preview-categorias').text((selecionadas.length > 0) ? `${previewTexto}` : 'Nenhuma categoria selecionada');
         });
@@ -178,19 +168,43 @@ document.getElementById("form-cadastrar-manga").addEventListener('submit', funct
         return;
     }
 
-    // Verifica o título
-    const tituloInput = document.getElementById("titulo");
-    const titulo = tituloInput.value.trim();
-    if (titulo === "") {
-        mostrarPopover(tituloInput, "Sem nome, sem destino!", "Esse mangá precisa de um título para começar sua própria aventura. Dê a ele um propósito!");
+    // Verifica o título inglês
+    const tituloEngInput = document.getElementById("titulo_eng");
+    const tituloEng = tituloEngInput.value.trim();
+    if (tituloEng === "") {
+        mostrarPopover(tituloEngInput, "Sem nome, sem destino!", "Esse mangá precisa de um título para começar sua própria aventura. Dê a ele um propósito!");
+        return;
+    }
+
+    // Verifica o Idioma
+    const idiomaInput = document.getElementById("idioma");
+    const idioma = idiomaInput.value.trim();
+    if (idioma === "") {
+        mostrarPopover(idiomaInput, "Sem Passaporte Linguístico!", "Esse mangá quer viajar pelo mundo, mas esqueceu de dizer em que idioma! Ajude-o a tirar o passaporte preenchendo essa informação.");
         return;
     }
 
     // Verifica a data de lançamento
-    const lancamentoInput = document.getElementById("data-lancamento");
-    const lancamento = lancamentoInput.value;
-    if (lancamento === "") {
-        mostrarPopover(lancamentoInput, "Cronologia quebrada!", "Toda grande obra tem um passado. Preencha a data de lançamento com o dia em que essa história começou.");
+    const publicacaoInput = document.getElementById("data_publicacao");
+    const publicacao = publicacaoInput.value;
+    if (publicacao === "") {
+        mostrarPopover(publicacaoInput, "Cronologia quebrada!", "Toda grande obra tem um passado. Preencha a data de lançamento com o dia em que essa história começou.");
+        return;
+    }
+
+    // Verifica o título japonês
+    const tituloJapInput = document.getElementById("titulo_jap");
+    const tituloJap = tituloJapInput.value.trim();
+    if (tituloJap === "") {
+        mostrarPopover(tituloJapInput, "Sem Nome no Japão...", "Para respeitar a origem e identidade do mangá, o título em japonês é essencial. Insira o nome original antes de concluir o cadastro!");
+        return;
+    }
+
+    // Verifica a coleção
+    const colecaoInput = document.getElementById("colecao");
+    const colecao = colecaoInput.value.trim();
+    if (colecao === "") {
+        mostrarPopover(colecaoInput, "Família Ausente...", "Este volume está sem uma coleção para chamar de casa! Por favor, informe a coleção para reunir todos os capítulos dessa história.");
         return;
     }
 
