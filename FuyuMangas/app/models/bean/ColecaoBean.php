@@ -3,9 +3,9 @@ class ColecaoBean {
     private ?int $id;
     private string $nome;
 
-    public function __construct($id = null, $nome = '') {
-        $this->id = $id;
-        $this->nome = $nome;
+    public function __construct(array $dados = []) {
+        $this->id = $dados['id'] ?? null;
+        $this->nome = $dados['nome'] ?? '';
     }
 
     public function getId(): ?int {

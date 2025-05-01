@@ -7,49 +7,20 @@
     require_once __Dir__ . '/ColecaoDAO.php';
 
     class MangaDAO extends Model {
-        // Listar todos os mangás
-        public function listarTodos() {
-            $stmt = $this->db->query("SELECT * FROM mangas");
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        }
-
         // Listar apenas os mangás ativos
         public function listarTodosAtivos() {
             $stmt = $this->db->query("SELECT * FROM mangas WHERE ativo = 1");
             $mangas = [];
 
+            $autorDAO = new AutorDAO();
+            $colecaoDAO = new ColecaoDAO();
+            $categoriaDAO = new CategoriaDAO();
+
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $manga = new MangaBean();
-                $manga->setId($row['id']);
-                $manga->setTituloJap($row['titulo_jap']);
-                $manga->setTituloEng($row['titulo_eng']);
-                $manga->setEditora($row['editora']);
-                $manga->setPaginas($row['paginas']);
-                $manga->setDescricao($row['descricao']);
-                $manga->setPreco($row['preco']);
-                $manga->setEstoque($row['estoque']);
-                $manga->setImagem($row['imagem']);
-                $manga->setDataPublicacao($row['data_publicacao']);
-                $manga->setFaixaEtaria($row['faixa_etaria']);
-                $manga->setIdioma($row['idioma']);
-                $manga->setAtivo($row['ativo']);
-                
-                // Autor
-                $autorDAO = new AutorDAO();
-                $autor = $autorDAO->buscarPorId($row['id_autor']);
-                $manga->setAutor($autor);
-
-                // Coleção
-                $colecaoDAO = new ColecaoDAO();
-                $colecao = $colecaoDAO->buscarPorId($row['id_colecao']);
-                $manga->setColecao($colecao);
-
-                // Categorias
-                $categoriaDAO = new CategoriaDAO();
-                $categorias = $categoriaDAO->buscarPorMangaId($manga->getId());
-                $manga->setCategorias($categorias);
-
-                $mangas[] = $manga;
+                $row['autor'] = $autorDAO->buscarPorId($row['id_autor']);
+                $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
+                $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
+                $mangas[] = new MangaBean($row);
             }
 
             return $mangas;
@@ -64,37 +35,15 @@
 
             if(!$row) return null;
 
-            $manga = new MangaBean();
-            $manga->setId($row['id']);
-            $manga->setTituloJap($row['titulo_jap']);
-            $manga->setTituloEng($row['titulo_eng']);
-            $manga->setEditora($row['editora']);
-            $manga->setPaginas($row['paginas']);
-            $manga->setDescricao($row['descricao']);
-            $manga->setPreco($row['preco']);
-            $manga->setEstoque($row['estoque']);
-            $manga->setImagem($row['imagem']);
-            $manga->setDataPublicacao($row['data_publicacao']);
-            $manga->setFaixaEtaria($row['faixa_etaria']);
-            $manga->setIdioma($row['idioma']);
-            $manga->setAtivo($row['ativo']);
-            
-            // Autor
             $autorDAO = new AutorDAO();
-            $autor = $autorDAO->buscarPorId($row['id_autor']);
-            $manga->setAutor($autor);
-
-            // Coleção
             $colecaoDAO = new ColecaoDAO();
-            $colecao = $colecaoDAO->buscarPorId($row['id_colecao']);
-            $manga->setColecao($colecao);
-
-            // Categorias
             $categoriaDAO = new CategoriaDAO();
-            $categorias = $categoriaDAO->buscarPorMangaId($manga->getId());
-            $manga->setCategorias($categorias);
 
-            return $manga;
+            $row['autor'] = $autorDAO->buscarPorId($row['id_autor']);
+            $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
+            $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
+
+            return new MangaBean($row);
         }
 
         // Adicionar um novo mangá
@@ -104,8 +53,16 @@
                 $this->db->beginTransaction();
 
                 // Insere o mangá
-                $stmt = $this->db->prepare("INSERT INTO mangas (titulo, autor, editora, paginas, descricao, preco, estoque, imagem, data_publicacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$manga->getTitulo(), $manga->getAutor(), $manga->getEditora(), $manga->getPaginas(), $manga->getDescricao(), $manga->getPreco(), $manga->getEstoque(), $manga->getImagem(), $manga->getDataPublicacao()]);
+                $stmt = $this->db->prepare('INSERT INTO mangas 
+                    (titulo_eng, titulo_jap, id_autor, id_colecao, editora, paginas, descricao, 
+                    preco, estoque, imagem, data_publicacao, faixa_etaria, idioma, ativo) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+                $stmt->execute([$manga->getTituloEng(), $manga->getTituloJap(),
+                    $manga->getAutor()->getId(),$manga->getColecao()->getId(),
+                    $manga->getEditora(), $manga->getPaginas(), $manga->getDescricao(), 
+                    $manga->getPreco(), $manga->getEstoque(), $manga->getImagem(), 
+                    $manga->getDataPublicacao(), $manga->getFaixaEtaria(), $manga->getIdioma(),
+                    $manga->getAtivo()]);
 
                 // Pega o ID do mangá recem criado
                 $mangaId = $this->db->lastInsertId();
@@ -120,16 +77,16 @@
 
                 // Tudo certo, salva tudo!
                 $this->db->commit();
-                return true;
+                return $mangaId;
 
             } catch (PDOException $e) {
                 // Cancela a inserção no banco de dados
                 $this->db->rollBack();
-                echo "Erro ao adicionar mangá: " . $e->getMessage();
-                return false;
+                throw new Exception("Erro ao adicionar mangá: " . $e->getMessage());
             }
         }
 
+        /*
         public function atualizar(MangaBean $manga) {
             try {
                 // Inicia a transação
@@ -161,6 +118,7 @@
                 return false;
             }
         }
+        */
 
         // Desativar um mangá (Não podemos exclui-lo)
         public function desativar($id) {

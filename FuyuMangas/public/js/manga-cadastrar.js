@@ -6,7 +6,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $('#faixa_etaria').select2({
-        minimumResultsForSearch: Infinity // Remove a barrinha de busca se não quiser
+        placeholder: '...',
+        minimumResultsForSearch: Infinity // Remove a barrinha de busca
+    });
+
+    $('#autor').select2({
+        placeholder: 'Escolha um autor...'
+    });
+
+    $('#colecao').select2({
+        placeholder: 'Escolha uma colecao...'
+    });
+
+    // Quando o dropdown for aberto, pega o input de busca e altera o placeholder:
+    $('#autor').on('select2:open', function () {
+        setTimeout(function () {
+            document.querySelector('.select2-container--open .select2-search__field')
+                .setAttribute('placeholder', 'Digite para buscar...');
+        }, 0);
+    });
+
+    $('#colecao').on('select2:open', function () {
+        setTimeout(function () {
+            document.querySelector('.select2-container--open .select2-search__field')
+                .setAttribute('placeholder', 'Digite para buscar...');
+        }, 0);
     });
 });
 
@@ -72,6 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
     inputAutor.addEventListener('input', function () {
         const valor = inputAutor.value.trim();
         previewAutor.textContent = (valor !== '') ? valor : 'Autor';
+    });
+
+    // Input do autor
+    $(document).ready(function () {
+        $('#autor').on('change', function () {
+            const autor = $(this).select2('data')[0].text;
+            $('#preview-autor').text((autor != null && autor != '') ? `${autor}` : 'Autor');
+        });
     });
 
     // Input da descricao
@@ -201,18 +233,52 @@ document.getElementById("form-cadastrar-manga").addEventListener('submit', funct
     }
 
     // Verifica a coleção
-    const colecaoInput = document.getElementById("colecao");
-    const colecao = colecaoInput.value.trim();
-    if (colecao === "") {
-        mostrarPopover(colecaoInput, "Família Ausente...", "Este volume está sem uma coleção para chamar de casa! Por favor, informe a coleção para reunir todos os capítulos dessa história.");
+    const colecaoInput = $("#colecao");
+    const colecao = colecaoInput.val();
+    if (colecao === '' || colecao === undefined) {
+        const select2Container = colecaoInput.next('.select2-container').find('.select2-selection')[0];
+
+        select2Container.setAttribute("data-bs-toggle", "popover");
+        select2Container.setAttribute("data-bs-placement", "top");
+        select2Container.setAttribute("data-bs-title", "Família Ausente...");
+        select2Container.setAttribute("data-bs-content", "Este volume está sem uma coleção para chamar de casa! Por favor, informe a coleção para reunir todos os capítulos dessa história.");
+        select2Container.setAttribute("data-bs-custom-class", "popover-erro");
+        select2Container.classList.add('is-invalido');
+
+        const pop = new bootstrap.Popover(select2Container);
+        pop.show();
+
+        // Remover o popover quando selecionar algo
+        $(colecaoInput).on('change', function () {
+            bootstrap.Popover.getInstance(select2Container)?.dispose();
+            select2Container.classList.remove("is-invalido");
+        });
+
         return;
     }
 
     // Verifica o autor
-    const autorInput = document.getElementById("autor");
-    const autor = autorInput.value.trim();
-    if (autor === "") {
-        mostrarPopover(autorInput, "Caneta fantasma!", "Toda história precisa de uma mente brilhante por trás... Quem foi o autor que desenhou este destino? Preencha esse campo com o nome do mestre!");
+    const autorInput = $("#autor");
+    const autor = autorInput.val();
+    if (autor === '' || autor === undefined) {
+        const select2Container = autorInput.next('.select2-container').find('.select2-selection')[0];
+
+        select2Container.setAttribute("data-bs-toggle", "popover");
+        select2Container.setAttribute("data-bs-placement", "top");
+        select2Container.setAttribute("data-bs-title", "Caneta fantasma!");
+        select2Container.setAttribute("data-bs-content", "Toda história precisa de uma mente brilhante por trás... Quem foi o autor que desenhou este destino? Preencha esse campo com o nome do mestre!");
+        select2Container.setAttribute("data-bs-custom-class", "popover-erro");
+        select2Container.classList.add('is-invalido');
+
+        const pop = new bootstrap.Popover(select2Container);
+        pop.show();
+
+        // Remover o popover quando selecionar algo
+        $(autorInput).on('change', function () {
+            bootstrap.Popover.getInstance(select2Container)?.dispose();
+            select2Container.classList.remove("is-invalido");
+        });
+
         return;
     }
 
@@ -221,6 +287,31 @@ document.getElementById("form-cadastrar-manga").addEventListener('submit', funct
     const editora = editoraInput.value.trim();
     if (editora === "") {
         mostrarPopover(editoraInput, "Mangá sem lar!", "Esse mangá está perdido no mercado, sem uma editora pra guiá-lo... Dê um lar a ele preenchendo o nome da editora responsável.");
+        return;
+    }
+
+    // Verifica a faixa etária
+    const faixaEtariaInput = $("#faixa_etaria");
+    const faixaEtaria = faixaEtariaInput.val();
+    if (faixaEtaria === '' || faixaEtaria === undefined) {
+        const select2Container = faixaEtariaInput.next('.select2-container').find('.select2-selection')[0];
+
+        select2Container.setAttribute("data-bs-toggle", "popover");
+        select2Container.setAttribute("data-bs-placement", "top");
+        select2Container.setAttribute("data-bs-title", "Nível de Acesso Indefinido!");
+        select2Container.setAttribute("data-bs-content", "Essa história pode conter momentos fofos ou intensos… mas para quem? Ajude-o a encontrar o público certo preenchendo essa informação.");
+        select2Container.setAttribute("data-bs-custom-class", "popover-erro");
+        select2Container.classList.add('is-invalido');
+
+        const pop = new bootstrap.Popover(select2Container);
+        pop.show();
+
+        // Remover o popover quando selecionar algo
+        $(faixaEtariaInput).on('change', function () {
+            bootstrap.Popover.getInstance(select2Container)?.dispose();
+            select2Container.classList.remove("is-invalido");
+        });
+
         return;
     }
 

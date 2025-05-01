@@ -4,10 +4,10 @@ class AutorBean {
     private string $nome;
     private ?string $fotoPerfil;
 
-    public function __construct($id = null, $nome = '', $fotoPerfil = '') {
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->fotoPerfil = $fotoPerfil;
+    public function __construct(array $dados = []) {
+        $this->id = $dados['id'] ?? null;
+        $this->nome = $dados['nome'] ?? '';
+        $this->fotoPerfil = $dados['foto_perfil'] ?? '';
     }
 
 	public function getId(): ?int {

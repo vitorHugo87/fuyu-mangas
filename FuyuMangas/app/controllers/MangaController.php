@@ -7,24 +7,39 @@
     class MangaController extends Controller {
         private $mangaDAO;
         private $categoriaDAO;
+        private $autorDAO;
+        private $colecaoDAO;
 
         public function __construct() {
             $this->mangaDAO = new MangaDAO();
             $this->categoriaDAO = new CategoriaDAO();
+            $this->autorDAO = new AutorDAO();
+            $this->colecaoDAO = new ColecaoDAO();
         }
 
         // Mostra o formulário de cadastro
         public function cadastrar() {
+            // Pega todos os autores para o checkbox de autor
+            $autores = $this->autorDAO->listarTodos();
+            // Ordena os autores pelo nome
+            usort($autores, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
+
             // Pega todas as categorias para usar nos checkboxs de categorias
             $categorias = $this->categoriaDAO->listarTodos();
-
             // Ordena as categorias pelo nome
             usort($categorias, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
 
+            // Pega todas as coleções para usar no checkbox de coleção
+            $colecoes = $this->colecaoDAO->listarTodos();
+            // Ordena as coleções pelo nome
+            usort($colecoes, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
+
             // Redireciona para a tela de cadastro de mangás
-            $this->render("manga/cadastrar", ["categorias" => $categorias, 
-                "css" =>[BASE_URL . "/css/manga-cadastrar.css"],
-                "js" => [BASE_URL . "/js/manga-cadastrar.js"]
+            $this->render("manga/cadastrar", ['autores' => $autores, 
+                'colecoes' => $colecoes,
+                'categorias' => $categorias, 
+                'css' =>[BASE_URL . '/css/manga-cadastrar.css'],
+                'js' => [BASE_URL . '/js/manga-cadastrar.js']
             ]);
         }
 
@@ -36,18 +51,25 @@
             // strtolower -> Transforma tudo em lowercase
             // ucwords -> Deixa a primeira letra de cada palavra maiúsculo
             // ucfirst -> Deixa apenas a primeira letra maiuscula
-            $titulo = trim($_POST['titulo'] ?? '');
-            $dataLancamento = $_POST['data_lancamento'] ?? '';
-            $autor = ucwords(strtolower(trim($_POST['autor'] ?? '')));
-            $editora = ucwords(strtolower(trim($_POST['editora'] ?? '')));
-            $descricao = trim($_POST['descricao'] ?? '');
-            $paginas = isset($_POST['paginas']) ? (int) $_POST['paginas'] : 0;
-            $estoque = isset($_POST['estoque']) ? (int) $_POST['estoque'] : 0;
-            $preco = isset($_POST['preco']) ? round((float) str_replace(',', '.', $_POST['preco']), 2) : 0.0;
-            $categorias = $_POST['categorias'] ?? [];
-            $categoriasObj = [];
-            foreach($categorias as $catId) {
-                $categoriasObj[] = new CategoriaBean($catId);
+            $dados['titulo_eng'] = trim($_POST['titulo_eng'] ?? '');
+            $dados['titulo_jap'] = trim($_POST['titulo_jap'] ?? '');
+            $dados['idioma'] = ucwords(strtolower(trim($_POST['idioma'] ?? '')));
+            $dados['data_publicacao'] = $_POST['data_publicacao'] ?? '';
+            $dados['editora'] = ucwords(strtolower(trim($_POST['editora'] ?? '')));
+            $dados['faixa_etaria'] = $_POST['faixa_etaria'] ?? '';
+            $dados['descricao'] = trim($_POST['descricao'] ?? '');
+
+            $dados['paginas'] = isset($_POST['paginas']) ? (int) $_POST['paginas'] : 0;
+            $dados['estoque'] = isset($_POST['estoque']) ? (int) $_POST['estoque'] : 0;
+            $dados['preco'] = isset($_POST['preco']) ? round((float) str_replace(',', '.', $_POST['preco']), 2) : 0.0;
+            $dados['ativo'] = true;
+
+            $dados['autor'] = new AutorBean((['id' => $_POST['autor']] ?? []));
+            $dados['colecao'] = new ColecaoBean((['id' => $_POST['colecao']] ?? []));
+
+            $dados['categorias'] = [];
+            foreach(($_POST['categorias'] ?? []) as $catId) {
+                $dados['categorias'][] = new CategoriaBean($catId);
             }
             
             // Salva a imagem
@@ -56,7 +78,7 @@
 
                 // Gera um nome único para evitar conflitos
                 $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-                $nomeArquivo = uniqid('capa_', true) . '.' . $extensao;
+                $nomeArquivo = 'capa_' . time() . '_' . bin2hex(random_bytes(5)) . '.' . $extensao;
 
                 // Define o caminho para salvar a imagem
                 $caminhoDestino = __DIR__ . '/../../public/img/capas/' . $nomeArquivo;
@@ -64,7 +86,7 @@
                 // Move o arquivo da pasta temporária para a pasta correta
                 if (move_uploaded_file($arquivo['tmp_name'], $caminhoDestino)) {
                     // Caminho que será salvo no banco de dados (relativo ao site)
-                    $caminhoParaBanco = 'img/capas/' . $nomeArquivo;
+                    $dados['imagem'] = 'img/capas/' . $nomeArquivo;
                 } else {
                     die('Ops! Tivemos um erro ao mover o arquivo de imagem..');
                 }
@@ -73,7 +95,7 @@
             }
 
             // Cria um objeto MangaBean
-            $manga = new MangaBean(null, $titulo, $autor, $editora, $paginas, $descricao, $preco, $estoque, $dataLancamento, $caminhoParaBanco, 1, $categoriasObj);
+            $manga = new MangaBean($dados);
 
             // Passa o objeto para o models/dao/MangaDao.php
             $this->mangaDAO->adicionar($manga);

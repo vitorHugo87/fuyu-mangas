@@ -3,8 +3,8 @@
 	require_once __DIR__ . '/ColecaoBean.php';
     class MangaBean {
         private ?int $id;
-        private string $tituloJap;
 		private string $tituloEng;
+        private string $tituloJap;
         private ?AutorBean $autor;
 		private ?ColecaoBean $colecao;
         private string $editora;
@@ -19,41 +19,32 @@
         private bool $ativo;
         private array $categorias;
 
-        public function __construct(
-            $id = null, 
-            $tituloJap = '', 
-			$tituloEng = '',
-            $autor = null, 
-			$colecao = null,
-            $editora = '',
-            $paginas = 0,
-            $descricao = '',
-            $preco = 0.0,
-            $estoque = 0,
-            $dataPublicacao = '',
-			$faixaEtaria = '',
-			$idioma = '',
-            $imagem = '',
-            $ativo = true,
-            $categorias = []
-        ) {
-            $this->id = $id;
-            $this->tituloJap = $tituloJap;
-			$this->tituloEng = $tituloEng;
-			$this->colecao = $colecao;
-            $this->autor = $autor;
-            $this->editora = $editora;
-            $this->paginas = $paginas;
-            $this->descricao = $descricao;
-            $this->preco = $preco;
-            $this->estoque = $estoque;
-            $this->dataPublicacao = $dataPublicacao;
-			$this->faixaEtaria = $faixaEtaria;
-			$this->idioma = $idioma;
-            $this->imagem = $imagem;
-            $this->ativo = $ativo;
-            $this->categorias = $categorias;
-        }
+		public function __construct(array $dados = []) {
+			$this->id = $dados['id'] ?? null;
+
+			// Dados que devem vir como string
+			$this->tituloEng = $dados['titulo_eng'] ?? '';
+			$this->tituloJap = $dados['titulo_jap'] ?? '';
+			$this->editora = $dados['editora'] ?? '';
+			$this->descricao = $dados['descricao'] ?? '';
+			$this->imagem = $dados['imagem'] ?? '';
+			$this->dataPublicacao = $dados['data_publicacao'] ?? '';
+			$this->faixaEtaria = $dados['faixa_etaria'] ?? '';
+			$this->idioma = $dados['idioma'] ?? '';
+
+			// Dados que devem vir como int / float
+			$this->paginas = $dados['paginas'] ?? 0;
+			$this->estoque = $dados['estoque'] ?? 0;
+			$this->preco = $dados['preco'] ?? 0.0;
+
+			// Dados que devem vir como bool
+			$this->ativo = $dados['ativo'] ?? false;
+
+			// Dados que devem vir como objetos
+			$this->autor = $dados['autor'] ?? null;
+			$this->colecao = $dados['colecao'] ?? null;
+			$this->categorias = $dados['categorias'] ?? [];
+		}
 
 		public function getId(): ?int {
 			return $this->id;
@@ -151,8 +142,9 @@
 
 		public function getDataPublicacaoFormatada() {
 			// Ex.: (2024-12-17) para (17 dez. 2024)
-			$date = new DateTime($this->dataPublicacao);
-		
+			$fuso = new DateTimeZone('America/Sao_Paulo');
+			$date = new DateTime($this->dataPublicacao, $fuso);
+
 			$formatter = new IntlDateFormatter(
 				'pt_BR',
 				IntlDateFormatter::LONG,
@@ -161,7 +153,7 @@
 				IntlDateFormatter::GREGORIAN,
 				"d MMM yyyy"
 			);
-		
+
 			return $formatter->format($date);
 		}
 

@@ -2,6 +2,7 @@
 -- !IMPORTANTE --
 -- !IMPORTANTE --
 
+<<<Transformar os Inputs de Autor e Coleção em selects no manga/cadastrar>>>
 <<<Arrumar o metodo de cadastrar manga no MangaDAO e no MangaController>>>
 
 -- !FIM IMPORTANTE --
