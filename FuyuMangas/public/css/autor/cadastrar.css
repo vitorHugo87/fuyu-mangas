@@ -1,0 +1,100 @@
+.select2-container .select2-search--inline .select2-search__field {
+    vertical-align: sub;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--caramelo-brilho);
+    color: black;
+}
+
+.select2-selection.select2-selection--single {
+    border-radius: var(--bs-border-radius);
+    padding: .375rem .75rem;
+    height: 38px;
+  }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: normal;
+    padding: 0px;
+}
+
+.left-side-container {
+    border-right: 1px solid rgba(255, 255, 255, .25);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px .25rem var(--caramelo-brilho);
+}
+
+#link-autor, #link-autor-large {
+    background-color: rgba(79, 92, 122, 0.3);
+    color: var(--caramelo-brilho);
+    border-radius: var(--bs-border-radius);
+    transition: 0.5s;
+}
+
+#link-autor:hover, #link-autor-large:hover {
+    background-color: rgba(79, 92, 122, 0.5);
+    color: var(--caramelo-brilho-hover);
+    border-radius: 0px;
+}
+
+#link-autor-large .destaque {
+    background-color: var(--caramelo-brilho);
+    color: var(--cinza-noturno);
+    transition: 0.5s;
+}
+
+#link-autor-large:hover .destaque {
+    background-color: var(--caramelo-brilho-hover);
+}
+
+.rounded-bottom-right {
+    border-top-left-radius: var(--bs-border-radius);
+    border-bottom-right-radius: var(--bs-border-radius);
+}
+
+#link-autor-large:hover .rounded-bottom-right {
+    border-top-left-radius: 0px
+}
+
+#preview-flag {
+    height: 1.25rem;
+    width: 1.875rem;
+}
+
+.btn-caramelo {
+    background-color: var(--caramelo-brilho);
+}
+
+.btn-caramelo:hover {
+    background-color: var(--caramelo-brilho-hover);
+    color: var(--preto-suave);
+}
+
+.btn-caramelo:active {
+    background-color: var(--caramelo-brilho-hover) !important;
+    color: var(--preto-suave) !important;
+}
+
+.text-caramelo {
+    color: var(--caramelo-brilho);
+}
+
+.modal-content {
+    background-color: var(--cinza-noturno);
+}
+
+.popover-erro {
+    --bs-popover-border-color: var(--caramelo-brilho);
+    --bs-popover-header-bg: var(--caramelo-brilho);
+    --bs-popover-bg: var(--branco-suave);
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: .5rem;
+}
+
+.is-invalido {
+    border: 2px solid var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px 2px var(--caramelo-brilho);
+}

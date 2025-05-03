@@ -26,7 +26,7 @@ CREATE TABLE `colecao` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `colecao` (
 
 LOCK TABLES `colecao` WRITE;
 /*!40000 ALTER TABLE `colecao` DISABLE KEYS */;
-INSERT INTO `colecao` VALUES (1,'Initial D'),(2,'Chainsaw Man'),(3,'Kaiju N.° 8'),(4,'One-Punch Man');
+INSERT INTO `colecao` VALUES (1,'Initial D'),(2,'Chainsaw Man'),(3,'Kaiju N.° 8'),(4,'One-Punch Man'),(5,'Miss Kobayashi\'s Dragon Maid');
 /*!40000 ALTER TABLE `colecao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-01 20:28:49
+-- Dump completed on 2025-05-02 23:10:50

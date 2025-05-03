@@ -2,14 +2,18 @@
 -- !IMPORTANTE --
 -- !IMPORTANTE --
 
-<<<Transformar os Inputs de Autor e Coleção em selects no manga/cadastrar>>>
-<<<Arrumar o metodo de cadastrar manga no MangaDAO e no MangaController>>>
+<<<Cadastro de Autor>>>
+<<<Mexer no MangaController, onde instancio o autor do manga>>>
+
+<<<Cadastro de Coleção>>>
+<<<Campo SLUG na tabela colecao>>>
 
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
 
--- Cadastro de Manga --
+-- Manga --
+Criar campo slug no banco de dados
 Refatorar o metodo de verificar se os campos foram preenchidos no manga-cadastrar.js
 
 -- MangaController->detalhe() --
@@ -41,3 +45,5 @@ Monster Musume
 Dragon Maid
 Record of Ragnarok
 Nichijou
+Slam Dunk
+Kuroko no Basket

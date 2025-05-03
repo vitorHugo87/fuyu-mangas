@@ -2,11 +2,23 @@
 class AutorBean {
     private ?int $id;
     private string $nome;
-    private ?string $fotoPerfil;
+    private string $biografia;
+    private string $paisOrigem;
+    private string $paisOrigemFlagSVG;
+    private string $dataNascimento;
+    private string $slug;
+    private array $redesSociais;
+    private string $fotoPerfil;
 
     public function __construct(array $dados = []) {
         $this->id = $dados['id'] ?? null;
         $this->nome = $dados['nome'] ?? '';
+        $this->biografia = $dados['biografia'] ?? '';
+        $this->paisOrigem = $dados['pais_origem'] ?? '';
+        $this->paisOrigemFlagSVG = $dados['pais_origem_flag_svg'] ?? '';
+        $this->dataNascimento = $dados['data_nascimento'] ?? '';
+        $this->slug = $dados['slug'] ?? '';
+        $this->redesSociais = $dados['redes_sociais'] ?? ['x' => '', 'site' => '', 'instagram' => ''];
         $this->fotoPerfil = $dados['foto_perfil'] ?? '';
     }
 
@@ -26,11 +38,59 @@ class AutorBean {
         $this->nome = $nome;
     }
 
-    public function getFotoPerfil(): ?string {
+    public function getBiografia() {
+        return $this->biografia;
+    }
+
+    public function setBiografia($biografia) {
+        $this->biografia = $biografia;
+    }
+
+    public function getPaisOrigem() {
+        return $this->paisOrigem;
+    }
+
+    public function setPaisOrigem($paisOrigem) {
+        $this->paisOrigem = $paisOrigem;
+    }
+
+    public function getPaisOrigemFlagSVG() {
+        return $this->paisOrigemFlagSVG;
+    }
+
+    public function setPaisOrigemFlagSVG($paisOrigemFlagSVG) {
+        $this->paisOrigemFlagSVG = $paisOrigemFlagSVG;
+    }
+
+    public function getDataNascimento() {
+        return $this->dataNascimento;
+    }
+
+    public function setDataNascimento($dataNascimento) {
+        $this->dataNascimento = $dataNascimento;
+    }
+
+    public function getSlug() {
+        return $this->slug;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+    public function getRedesSociais() {
+        return $this->redesSociais;
+    }
+
+    public function setRedesSociais($redesSociais) {
+        $this->redesSociais = $redesSociais;
+    }
+
+    public function getFotoPerfil(): string {
         return $this->fotoPerfil;
     }
 
-    public function setFotoPerfil(?string $fotoPerfil): void {
+    public function setFotoPerfil(string $fotoPerfil): void {
         $this->fotoPerfil = $fotoPerfil;
     }
 }

@@ -19,7 +19,7 @@
             <div class="container p-0">
                 <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
                     <img class="img-fluid rounded-circle me-3"
-                        src="https://i.pinimg.com/736x/01/e8/2f/01e82f0b542d4f8dc9d005a374e2cbd1.jpg" alt=""
+                        src="<?= BASE_URL . "/" . $manga->getAutor()->getFotoPerfil() ?>" alt=""
                         style="width: 50px; height: 50px; object-fit: cover;">
                     <div>
                         <p class="fw-bold mb-1 mb-0">Autor</p>

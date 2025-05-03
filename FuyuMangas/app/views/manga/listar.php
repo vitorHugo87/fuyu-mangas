@@ -14,7 +14,7 @@
 
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $manga->getTituloEng() ?></h5>
+                                <h5 class="card-title titulo-limitado"><?= $manga->getTituloEng() ?></h5>
                                 <p class="card-text descricao-limitada"><?= $manga->getDescricao() ?></p>
                                 <p class="card-text text-body-secondary fs-6 categoria-truncada">
                                     <?= implode(', ', array_map(fn($cat) => $cat->getNome(), $manga->getCategorias())); ?>

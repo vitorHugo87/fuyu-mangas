@@ -36,7 +36,7 @@ CREATE TABLE `mangas_categorias` (
 
 LOCK TABLES `mangas_categorias` WRITE;
 /*!40000 ALTER TABLE `mangas_categorias` DISABLE KEYS */;
-INSERT INTO `mangas_categorias` VALUES (1,4),(1,7),(1,34),(2,4),(2,7),(2,34),(3,4),(3,7),(3,34),(4,4),(4,14),(4,20),(4,30),(5,4),(5,14),(5,20),(5,30),(6,4),(6,5),(6,6),(6,17),(6,18),(7,4),(7,6),(7,18),(7,35),(8,4),(8,14),(8,20),(8,30),(9,4),(9,14),(9,20),(9,30),(10,4),(10,14),(10,20),(10,30);
+INSERT INTO `mangas_categorias` VALUES (1,4),(1,7),(1,34),(2,4),(2,7),(2,34),(3,4),(3,7),(3,34),(4,4),(4,14),(4,20),(4,30),(5,4),(5,14),(5,20),(5,30),(6,4),(6,5),(6,6),(6,17),(6,18),(7,4),(7,6),(7,18),(7,35),(8,4),(8,14),(8,20),(8,30),(9,4),(9,14),(9,20),(9,30),(10,4),(10,14),(10,20),(10,30),(11,6),(11,8),(11,10),(11,23),(12,6),(12,8),(12,10),(12,23),(13,6),(13,8),(13,10),(13,23);
 /*!40000 ALTER TABLE `mangas_categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-01 20:28:48
+-- Dump completed on 2025-05-02 23:10:50

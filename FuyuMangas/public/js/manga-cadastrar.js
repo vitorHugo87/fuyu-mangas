@@ -216,7 +216,7 @@ document.getElementById("form-cadastrar-manga").addEventListener('submit', funct
         return;
     }
 
-    // Verifica a data de lançamento
+    // Verifica a data de publicação
     const publicacaoInput = document.getElementById("data_publicacao");
     const publicacao = publicacaoInput.value;
     if (publicacao === "") {
