@@ -11,14 +11,12 @@ class AutorController extends Controller {
 
     public function cadastrar(): void {
         $this->render("autor/cadastrar", ['css' => [BASE_URL . '/css/autor/cadastrar.css'],
-            'js' => [BASE_URL . '/js/autor/cadastrar.js']]);
+            'js' => [BASE_URL . '/js/autor/cadastrar.js']
+        ]);
     }
 
     public function salvar(): void {
         // Recebe os dados do $_POST e $_FILES, valida, e chama $this->autorDAO->adicionar($autor);
-        var_dump($_FILES);
-        var_dump($_POST);
-
         $dados['nome'] = trim($_POST['nome'] ?? '');
         $dados['data_nascimento'] = $_POST['data_nascimento' ?? ''];
         $dados['biografia'] = trim($_POST['biografia'] ?? '');

@@ -9,7 +9,7 @@
     class MangaDAO extends Model {
         // Listar apenas os mangás ativos
         public function listarTodosAtivos() {
-            $stmt = $this->db->query("SELECT * FROM mangas WHERE ativo = 1");
+            $stmt = $this->db->query("SELECT * FROM manga WHERE ativo = 1");
             $mangas = [];
 
             $autorDAO = new AutorDAO();
@@ -28,7 +28,7 @@
 
         // Buscar um mangá pelo ID
         public function buscarPorId($id) {
-            $stmt = $this->db->prepare("SELECT * FROM mangas WHERE id = ?");
+            $stmt = $this->db->prepare("SELECT * FROM manga WHERE id = ?");
             $stmt->execute([$id]);
             
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@
                 $this->db->beginTransaction();
 
                 // Insere o mangá
-                $stmt = $this->db->prepare('INSERT INTO mangas 
+                $stmt = $this->db->prepare('INSERT INTO manga
                     (titulo_eng, titulo_jap, id_autor, id_colecao, editora, paginas, descricao, 
                     preco, estoque, imagem, data_publicacao, faixa_etaria, idioma, ativo) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
@@ -69,7 +69,7 @@
 
                 // Insere as categorias relacionadas
                 if(!empty($manga->getCategorias())) {
-                    $stmtCat = $this->db->prepare("INSERT INTO mangas_categorias (id_manga, id_categoria) VALUES (?, ?)");
+                    $stmtCat = $this->db->prepare("INSERT INTO manga_categoria (id_manga, id_categoria) VALUES (?, ?)");
                     foreach($manga->getCategorias() as $categoria) {
                         $stmtCat->execute([$mangaId, $categoria->getId()]);
                     }
@@ -123,7 +123,7 @@
         // Desativar um mangá (Não podemos exclui-lo)
         public function desativar($id) {
             try {
-                $stmt = $this->db->prepare("UPDATE mangas SET ativo = 0 WHERE id = ?");
+                $stmt = $this->db->prepare("UPDATE manga SET ativo = 0 WHERE id = ?");
                 return $stmt->execute([$id]);
             } catch (PDOException $e) {
                 echo "Erro ao desativar mangá: " . $e->getMessage();

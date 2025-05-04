@@ -3,7 +3,7 @@ require_once __DIR__ . '/../bean/CategoriaBean.php';
 class CategoriaDAO extends Model {
     
     public function listarTodos() {
-        $stmt = $this->db->query("SELECT * FROM categorias");
+        $stmt = $this->db->query("SELECT * FROM categoria");
         $categorias = [];
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -18,7 +18,7 @@ class CategoriaDAO extends Model {
     }
 
     public function buscarPorId($id) {
-        $stmt = $this->db->prepare("SELECT * FROM categorias WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM categoria WHERE id = ?");
         $stmt->execute([$id]);
 
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -33,7 +33,7 @@ class CategoriaDAO extends Model {
     }
 
     public function buscarPorMangaId($mangaId) {
-        $stmt = $this->db->prepare("SELECT c.id, c.nome, c.descricao FROM mangas_categorias mc INNER JOIN categorias c ON c.id = mc.id_categoria WHERE mc.id_manga = ?");
+        $stmt = $this->db->prepare("SELECT c.id, c.nome, c.descricao FROM manga_categoria mc INNER JOIN categoria c ON c.id = mc.id_categoria WHERE mc.id_manga = ?");
         $stmt->execute([$mangaId]);
         $categorias = [];
 
@@ -49,17 +49,17 @@ class CategoriaDAO extends Model {
     }
 
     public function adicionar($nome) {
-        $stmt = $this->db->prepare("INSERT INTO categorias (nome) VALUES (?)");
+        $stmt = $this->db->prepare("INSERT INTO categoria (nome) VALUES (?)");
         return $stmt->execute([$nome]);
     }
 
     public function atualizar($id, $nome) {
-        $stmt = $this->db->prepare("UPDATE categorias SET nome = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE categoria SET nome = ? WHERE id = ?");
         return $stmt->execute([$nome, $id]);
     }
 
     public function excluir($id) {
-        $stmt = $this->db->prepare("DELETE FROM categorias WHERE id = ?");
+        $stmt = $this->db->prepare("DELETE FROM categoria WHERE id = ?");
         return $stmt->execute([$id]);
     }
 }

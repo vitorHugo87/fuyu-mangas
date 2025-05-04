@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `avaliacoes`
+-- Table structure for table `avaliacao`
 --
 
-DROP TABLE IF EXISTS `avaliacoes`;
+DROP TABLE IF EXISTS `avaliacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `avaliacoes` (
+CREATE TABLE `avaliacao` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int DEFAULT NULL,
   `id_manga` int DEFAULT NULL,
@@ -32,17 +32,17 @@ CREATE TABLE `avaliacoes` (
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_manga` (`id_manga`),
-  CONSTRAINT `avaliacoes_chk_1` CHECK (((`nota` >= 1) and (`nota` <= 5)))
+  CONSTRAINT `avaliacao_chk_1` CHECK (((`nota` >= 1) and (`nota` <= 5)))
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `avaliacoes`
+-- Dumping data for table `avaliacao`
 --
 
-LOCK TABLES `avaliacoes` WRITE;
-/*!40000 ALTER TABLE `avaliacoes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `avaliacoes` ENABLE KEYS */;
+LOCK TABLES `avaliacao` WRITE;
+/*!40000 ALTER TABLE `avaliacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `avaliacao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-02 23:10:50
+-- Dump completed on 2025-05-03 22:33:44

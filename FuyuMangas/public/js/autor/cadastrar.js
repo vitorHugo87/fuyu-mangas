@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Inicializa Popovers do Bootstrap
-const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
 // Valida os campos do formulário antes de enviar os dados
 document.getElementById("form-cadastrar-autor").addEventListener('submit', function (event) {

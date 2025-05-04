@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pedidos_itens`
+-- Table structure for table `pedido_item`
 --
 
-DROP TABLE IF EXISTS `pedidos_itens`;
+DROP TABLE IF EXISTS `pedido_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pedidos_itens` (
+CREATE TABLE `pedido_item` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_pedido` int DEFAULT NULL,
   `id_manga` int DEFAULT NULL,
@@ -35,12 +35,12 @@ CREATE TABLE `pedidos_itens` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pedidos_itens`
+-- Dumping data for table `pedido_item`
 --
 
-LOCK TABLES `pedidos_itens` WRITE;
-/*!40000 ALTER TABLE `pedidos_itens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedidos_itens` ENABLE KEYS */;
+LOCK TABLES `pedido_item` WRITE;
+/*!40000 ALTER TABLE `pedido_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedido_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-02 23:10:50
+-- Dump completed on 2025-05-03 22:33:44

@@ -2,15 +2,17 @@
 -- !IMPORTANTE --
 -- !IMPORTANTE --
 
-<<<Cadastro de Autor>>>
-<<<Mexer no MangaController, onde instancio o autor do manga>>>
-
-<<<Cadastro de Coleção>>>
-<<<Campo SLUG na tabela colecao>>>
+<<<Arrumar manga/detalhe -> Usar exemplo do Nichijou Vol. 1
 
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
+
+-- Cadastros --
+Verificação dos inputs de datas (cadastro de manga, autor, colecao...)
+
+-- Diversos --
+Repensar sobre os construtores dos Beans... se eles ficam por padrao com '' ou null
 
 -- Manga --
 Criar campo slug no banco de dados
@@ -47,3 +49,4 @@ Record of Ragnarok
 Nichijou
 Slam Dunk
 Kuroko no Basket
+City

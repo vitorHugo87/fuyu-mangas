@@ -4,7 +4,7 @@ require_once __DIR__ . '/../bean/AutorBean.php';
 
 class AutorDAO extends Model {
     public function listarTodos(): array {
-        $stmt = $this->db->query("SELECT * FROM autores");
+        $stmt = $this->db->query("SELECT * FROM autor");
         $autores = [];
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -18,7 +18,7 @@ class AutorDAO extends Model {
     }
 
     public function buscarPorId(int $id): ?AutorBean {
-        $stmt = $this->db->prepare("SELECT * FROM autores WHERE id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM autor WHERE id = ?");
         $stmt->execute([$id]);
 
         if($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -37,7 +37,7 @@ class AutorDAO extends Model {
             $this->db->beginTransaction();
 
             // Insere o autor
-            $stmt = $this->db->prepare('INSERT INTO autores (nome, biografia, pais_origem, pais_origem_flag_svg,
+            $stmt = $this->db->prepare('INSERT INTO autor (nome, biografia, pais_origem, pais_origem_flag_svg,
                 data_nascimento, slug, redes_sociais, foto_perfil) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
             $stmt->execute([$autor->getNome(), $autor->getBiografia(), $autor->getPaisOrigem(), $autor->getPaisOrigemFlagSVG(),
                 $autor->getDataNascimento(), $autor->getSlug(), json_encode($autor->getRedesSociais(), JSON_UNESCAPED_UNICODE), $autor->getFotoPerfil()]);

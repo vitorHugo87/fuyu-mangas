@@ -1,0 +1,68 @@
+.select2-container .select2-search--inline .select2-search__field {
+    vertical-align: sub;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: var(--caramelo-brilho);
+    color: black;
+}
+
+.select2-selection.select2-selection--single {
+    border-radius: var(--bs-border-radius);
+    padding: .375rem .75rem;
+    height: 38px;
+  }
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: normal;
+    padding: 0px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px .25rem var(--caramelo-brilho);
+}
+
+.btn-caramelo {
+    background-color: var(--caramelo-brilho);
+}
+
+.btn-caramelo:hover {
+    background-color: var(--caramelo-brilho-hover);
+    color: var(--preto-suave);
+}
+
+.btn-caramelo:active {
+    background-color: var(--caramelo-brilho-hover) !important;
+    color: var(--preto-suave) !important;
+}
+
+.text-caramelo {
+    color: var(--caramelo-brilho);
+}
+
+.modal-content {
+    background-color: var(--cinza-noturno);
+}
+
+.popover-erro {
+    --bs-popover-border-color: var(--caramelo-brilho);
+    --bs-popover-header-bg: var(--caramelo-brilho);
+    --bs-popover-bg: var(--branco-suave);
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: .5rem;
+}
+
+.is-invalido {
+    border: 2px solid var(--caramelo-brilho);
+    box-shadow: 0px 0px 5px 2px var(--caramelo-brilho);
+}
+
+.main {
+    background-color: rgba(79, 92, 122, 0.3);
+}
+
+.books {
+    filter: invert(76%) sepia(8%) saturate(2460%) hue-rotate(341deg) brightness(80%) contrast(87%);
+    max-width: 345px;
+}

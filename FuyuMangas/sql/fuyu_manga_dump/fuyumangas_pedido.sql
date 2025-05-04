@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `pedidos`
+-- Table structure for table `pedido`
 --
 
-DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `pedido`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pedidos` (
+CREATE TABLE `pedido` (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int DEFAULT NULL,
   `data_pedido` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -34,12 +34,12 @@ CREATE TABLE `pedidos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `pedidos`
+-- Dumping data for table `pedido`
 --
 
-LOCK TABLES `pedidos` WRITE;
-/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
+LOCK TABLES `pedido` WRITE;
+/*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-02 23:10:50
+-- Dump completed on 2025-05-03 22:33:44
