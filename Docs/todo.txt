@@ -2,8 +2,6 @@
 -- !IMPORTANTE --
 -- !IMPORTANTE --
 
-<<<Arrumar manga/detalhe -> Usar exemplo do Nichijou Vol. 1
-
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
 -- !FIM IMPORTANTE --
@@ -28,10 +26,12 @@ Imagem - Preço / Estoque
 Autor - Qtd / Adicionar ao Carrinho
 (Compartilhar / Favoritar / Lista de Desejos) - Calcular Frete
 
+Mais da coleção
+
+Avaliações
+
 (Clientes que compraram este item também compraram)
 
-Detalhes - Avaliações
-Mais da coleção
 Produtos (Recomendados ou Similares)
 
 (Ao clicar em adicionar ao carrinho exibir pop-up perguntando se quer
@@ -44,7 +44,6 @@ como parametro
 
 -- Mangas Para Cadastrar --
 Monster Musume
-Dragon Maid
 Record of Ragnarok
 Nichijou
 Slam Dunk
