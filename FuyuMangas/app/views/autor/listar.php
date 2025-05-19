@@ -8,15 +8,16 @@
                 <a href="#" class="d-block text-decoration-none position-relative overflow-hidden shadow" id="link-autor">
                     <!-- Top Absoluto -->
                     <div class="destaque position-absolute top-0 start-0 px-2 py-1">
-                        <p class="fw-semibold mb-0">Top 1</p>
+                        <p class="fw-semibold mb-0">Top <?= $autor->getId() ?></p>
                     </div>
+
+                    <img src="<?= $autor->getPaisOrigemFlagSVG() ?>" id="preview-flag" class="img-fluid position-absolute top-0 end-0" alt="">
                     <!-- Fim Top Absoluto -->
                     <!-- Conteúdo -->
                     <div class="p-2 d-grid">
                         <img id="profile-img" class="img-fluid rounded-circle p-2"
                             src="<?= BASE_URL . '/' . $autor->getFotoPerfil() ?>" alt="">
                         <div class="d-flex mx-auto align-items-center">
-                            <img src="#" id="preview-flag" class="img-fluid rounded d-none me-2" alt="">
                             <p id="preview-nome" class="fw-semibold fs-5 mb-0"><?= $autor->getNome() ?></p>
                         </div>
 
