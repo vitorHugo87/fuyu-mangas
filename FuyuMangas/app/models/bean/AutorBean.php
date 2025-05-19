@@ -9,6 +9,7 @@ class AutorBean {
     private string $slug;
     private array $redesSociais;
     private string $fotoPerfil;
+    private array $colecoes;
 
     public function __construct(array $dados = []) {
         $this->id = $dados['id'] ?? null;
@@ -20,6 +21,7 @@ class AutorBean {
         $this->slug = $dados['slug'] ?? '';
         $this->redesSociais = $dados['redes_sociais'] ?? ['x' => '', 'site' => '', 'instagram' => ''];
         $this->fotoPerfil = $dados['foto_perfil'] ?? '';
+        $this->colecoes = $dados['colecoes'] ?? [];
     }
 
 	public function getId(): ?int {
@@ -92,5 +94,13 @@ class AutorBean {
 
     public function setFotoPerfil(string $fotoPerfil): void {
         $this->fotoPerfil = $fotoPerfil;
+    }
+
+    public function getColecoes(): array {
+        return $this->colecoes;
+    }
+
+    public function setColecoes($colecoes): void {
+        $this->colecoes = $colecoes;
     }
 }

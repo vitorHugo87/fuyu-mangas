@@ -16,31 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `carrinho`
+-- Table structure for table `manga_autor`
 --
 
-DROP TABLE IF EXISTS `carrinho`;
+DROP TABLE IF EXISTS `manga_autor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carrinho` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_usuario` int DEFAULT NULL,
-  `id_manga` int DEFAULT NULL,
-  `quantidade` int DEFAULT '1',
-  `data_adicionado` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_manga` (`id_manga`)
+CREATE TABLE `manga_autor` (
+  `id_manga` int NOT NULL,
+  `id_autor` int NOT NULL,
+  KEY `id_manga` (`id_manga`),
+  KEY `id_autor` (`id_autor`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `carrinho`
+-- Dumping data for table `manga_autor`
 --
 
-LOCK TABLES `carrinho` WRITE;
-/*!40000 ALTER TABLE `carrinho` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carrinho` ENABLE KEYS */;
+LOCK TABLES `manga_autor` WRITE;
+/*!40000 ALTER TABLE `manga_autor` DISABLE KEYS */;
+INSERT INTO `manga_autor` VALUES (1,1),(2,1),(3,1),(4,2),(5,2),(6,3),(7,4),(8,2),(9,2),(10,2),(11,5),(12,5),(13,5),(14,6),(15,6),(16,2);
+/*!40000 ALTER TABLE `manga_autor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

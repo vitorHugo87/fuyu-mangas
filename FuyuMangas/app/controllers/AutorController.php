@@ -70,4 +70,14 @@ class AutorController extends Controller {
         // Redireciona para a tela inicial
         //$this->render("layouts/main", []);
     }
+
+    public function listar(): void {
+        // Busca todos os autores
+        $autores = $this->autorDAO->listarTodos();
+
+        // Redireciona
+        $this->render("autor/listar", ['autores' => $autores, 
+            'css' => [BASE_URL . '/css/autor/listar.css'],
+            'js' => [BASE_URL . '/js/autor/listar.js']]);
+    }
 }

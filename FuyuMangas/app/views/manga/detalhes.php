@@ -19,19 +19,21 @@
             <img src="../../<?= $manga->getImagem() ?>" class="img-fluid shadow-lg" alt="">
             <!-- Fim Preview da Capa -->
             <hr>
-            <!-- Autor -->
-            <div class="container p-0">
-                <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
-                    <img class="img-fluid rounded-circle me-3"
-                        src="<?= BASE_URL . "/" . $manga->getAutor()->getFotoPerfil() ?>" alt=""
-                        style="width: 50px; height: 50px; object-fit: cover;">
-                    <div>
-                        <p class="fw-bold mb-1 mb-0">Autor</p>
-                        <p class="mb-0"><?= $manga->getAutor()->getNome() ?></p>
-                    </div>
-                </a>
-            </div>
-            <!-- Fim Autor -->
+            <!-- Autores -->
+            <?php foreach ($manga->getAutores() as $autor): ?>
+                <div class="p-0">
+                    <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
+                        <img class="img-fluid rounded-circle me-3"
+                            src="<?= BASE_URL . "/" . $autor->getFotoPerfil() ?>" alt=""
+                            style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                            <p class="fw-bold mb-1 mb-0">Autor</p>
+                            <p class="mb-0"><?= $autor->getNome() ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+            <!-- Fim Autores -->
         </div>
         <!-- Fim Preview da Capa / Autor -->
 

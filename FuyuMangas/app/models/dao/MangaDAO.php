@@ -4,7 +4,7 @@
     require_once __DIR__ . '/../bean/CategoriaBean.php';
     require_once __DIR__ . '/../dao/CategoriaDAO.php';
     require_once __DIR__ . '/AutorDAO.php';
-    require_once __Dir__ . '/ColecaoDAO.php';
+    require_once __DIR__ . '/ColecaoDAO.php';
 
     class MangaDAO extends Model {
         // Listar apenas os mangás ativos
@@ -17,7 +17,7 @@
             $categoriaDAO = new CategoriaDAO();
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $row['autor'] = $autorDAO->buscarPorId($row['id_autor']);
+                $row['autores'] = $autorDAO->buscarPorMangaId($row['id']);
                 $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
                 $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
                 $mangas[] = new MangaBean($row);
@@ -39,7 +39,7 @@
             $colecaoDAO = new ColecaoDAO();
             $categoriaDAO = new CategoriaDAO();
 
-            $row['autor'] = $autorDAO->buscarPorId($row['id_autor']);
+            $row['autores'] = $autorDAO->buscarPorMangaId($row['id']);
             $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
             $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
 

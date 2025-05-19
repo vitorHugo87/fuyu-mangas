@@ -84,7 +84,7 @@
             <!-- Previews -->
             <div class="col-md-6">
                 <!-- Preview Detalhado -->
-                <div class="container p-0 w-50 mb-5">
+                <div class="mx-auto p-0 w-50 mb-5">
                     <a href="#" class="d-block text-decoration-none position-relative" id="link-autor-large">
                         <!-- Top 5 Absoluto -->
                         <div class="destaque position-absolute top-0 start-0 px-2 py-1 rounded-bottom-right">
@@ -93,7 +93,7 @@
                         <!-- Fim Top 5 Absoluto -->
                         <!-- Conteúdo -->
                         <div class="p-2 d-grid">
-                            <img id="profile-img-large" class="img-fluid rounded-circle ratio-1x1 p-2"
+                            <img id="profile-img-large" class="img-fluid rounded-circle p-2"
                                 src="../img/autores_pfps/default_pfp.jpg" alt="">
                             <div class="d-flex mx-auto align-items-center">
                                 <img src="#" id="preview-flag" class="img-fluid rounded d-none me-2" alt="">
@@ -107,7 +107,7 @@
                 <!-- Fim Preview Detalhado -->
 
                 <!-- Preview Basico -->
-                <div class="container p-0 w-50">
+                <div class="mx-auto p-0 w-50">
                     <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
                         <img id="profile-img-small" class="img-fluid rounded-circle me-3"
                             src="../img/autores_pfps/default_pfp.jpg" alt=""

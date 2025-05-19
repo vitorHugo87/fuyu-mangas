@@ -13,12 +13,23 @@ class ColecaoDAO extends Model {
     }
 
     public function buscarPorId(int $id): ?ColecaoBean {
-        $stmt = $this->db->prepare("SELECT * FROM colecao WHERE id = ?");
+        $stmt = $this->db->prepare('SELECT * FROM colecao WHERE id = ?');
         $stmt->execute([$id]);
 
         if($row = $stmt->fetch(PDO::FETCH_ASSOC)) return new ColecaoBean($row);
 
         return null; // Caso não encontre nenhuma colecao
+    }
+
+    public function buscarPorAutorId(int $autorId): array {
+        $stmt = $this->db->prepare('SELECT c.* FROM colecao c INNER JOIN autor_colecao ac on c.id = ac.id_colecao WHERE ac.id_autor = ?');
+        $stmt->execute([$autorId]);
+
+        $colecoes = [];
+
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) $colecoes[] = new ColecaoBean($row);
+
+        return $colecoes;
     }
 
     public function adicionar(ColecaoBean $colecao): int {

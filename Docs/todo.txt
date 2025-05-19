@@ -1,51 +1,129 @@
--- !IMPORTANTE --
--- !IMPORTANTE --
--- !IMPORTANTE --
+----------------------------------------------------------
+# PRIORIDADE
 
--- !FIM IMPORTANTE --
--- !FIM IMPORTANTE --
--- !FIM IMPORTANTE --
+-> Arrumar campo Autor do cadastro de manga 
+(Permitir multiplos autores)
+-> Colocar select de autores no cadastro de coleção 
+(Permitir multiplos autores)
 
--- Cadastros --
-Verificação dos inputs de datas (cadastro de manga, autor, colecao...)
+-> Foi adicionado o campo id_autor na tabela colecao
+Atualizar cadastro de coleção, ColecaoBean e ColecaoDAO
+----------------------------------------------------------
 
--- Diversos --
-Repensar sobre os construtores dos Beans... se eles ficam por padrao com '' ou null
+----------------------------------------------------------
+# CADASTROS
 
--- Manga --
-Criar campo slug no banco de dados
-Refatorar o metodo de verificar se os campos foram preenchidos no manga-cadastrar.js
+-> Validação dos inputs de datas (Nascimento, Lançamento, Etc..).
+-> Travar Ratio das imagens logo no cadastro 
+(1:1 para foto de perfil por exemplo)
 
--- MangaController->detalhe() --
-Criar página de erro, caso não encontre o mangá
+-> Cadastro de Usuario.
+-> Cadastro de Endereço (Será feito na tela de Checkout).
+-> Cadastro de Categoria.
+----------------------------------------------------------
 
--- manga/detalhes.php --
-Imagem - Titulo / Data Publicação
-Imagem - Descrição
-Imagem - Preço / Estoque
-Autor - Qtd / Adicionar ao Carrinho
-(Compartilhar / Favoritar / Lista de Desejos) - Calcular Frete
 
-Mais da coleção
+----------------------------------------------------------
+# PAGINA AUTOR/CADASTRAR
 
-Avaliações
+## ESTILIZAÇÃO
+-> Copiar o Preview-Large da pagina Autor/Listar.
+----------------------------------------------------------
 
-(Clientes que compraram este item também compraram)
+----------------------------------------------------------
+# PAGINA MANGA/DETALHES 
 
-Produtos (Recomendados ou Similares)
+## VISUAL
+-> Adicionar (Compartilhar / Lista de Desejos).
+-> Adicionar (Calcular Frete)
 
-(Ao clicar em adicionar ao carrinho exibir pop-up perguntando se quer
-continuar comprando ou finalizar compra)
+-> Adicionar Carousel (Mais da Coleção).
+-> Adicionar Avaliações.
 
-Quando clicar em uma categoria, redirecionar para manga/listar com a categoria
-como parametro
+-> Adicionar (Clientes que compraram este item também compraram).
+-> Adicionar (Mangás Similares).
+--------------------
 
--- DB --
+## DINAMISMO
+-> Ao clicar em adicionar ao carrinho exibir pop-up perguntando 
+se quer continuar comprando ou finalizar compra.
 
--- Mangas Para Cadastrar --
-Monster Musume
-Record of Ragnarok
-Nichijou
-Slam Dunk
-Kuroko no Basket
-City
+-> Quando clicar na coleção, redirecionar para manga/listar com a 
+coleção como parâmetro.
+
+-> Quando clicar em uma categoria, redirecionar para manga/listar
+com a categoria como parâmetro.
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+# RESPONSIVIDADE
+
+## AUTOR
+-> cadastrar.php
+--------------------
+
+## COLEÇÃO
+-> cadastrar.php
+--------------------
+
+## MANGA
+-> cadastrar.php
+-> listar.php
+-> detalhes.php
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+# DIVERSOS
+-> Repensar sobre os construtores dos Beans... se eles ficam
+por padrao com '' ou null (Se ficarem com '' acho que cadastra
+no DB, mas o ideal seria não cadastrar com um campo "nulo").
+
+-> Refatorar JS dos cadastros (Tem muito código repetido).
+-> Refatorar paginas HTML (Estrutura e Semântica).
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+# DB
+
+## TABELA MANGA
+-> Criar campo (data lançamento(DATE)), vai ser útil para
+ordenar os mangás de uma mesma coleção.
+
+-> Criar campo (slug(VARCHAR 255)).
+
+-> Criar campo (ranking(INT)) que guarda a colocação do mangá
+em relação as vendas do mesmo.
+--------------------
+
+## TABELA AUTOR
+-> Criar campo (ranking(INT)) que guarda a colocação do autor
+em relação as vendas de seus mangás.
+--------------------
+
+## TABELA COLEÇÃO
+-> Criar campo (ranking(INT)) que guarda a colocação da coleção
+em relação as vendas de seus mangás.
+--------------------
+
+## DIVERSOS
+-> Verificar se as relações PK/FK estão realmente conectadas.
+
+-> Criar Trigger que ativa toda vez que uma compra é realizada
+atualizando os rankings dos autores e mangas
+(Ranking calculado pela quantidade de mangas vendidos, caso
+haja empate, o desempate será feito pela receita total gerada).
+
+-> Criptografar informações.
+--------------------
+----------------------------------------------------------
+
+
+----------------------------------------------------------
+# MANGÁS PARA CADASTRAR
+-> Monster Musume.
+-> Record of Ragnarok
+-> Slam Dunk
+-> Kuroko no Basket

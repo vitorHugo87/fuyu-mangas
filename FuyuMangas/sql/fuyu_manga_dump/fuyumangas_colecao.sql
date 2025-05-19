@@ -32,7 +32,7 @@ CREATE TABLE `colecao` (
   `slug` varchar(191) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `colecao` (
 
 LOCK TABLES `colecao` WRITE;
 /*!40000 ALTER TABLE `colecao` DISABLE KEYS */;
-INSERT INTO `colecao` VALUES (1,'Initial D','Takumi Fujiwara parece só um entregador de tofu… até entrar no volante. Nas montanhas de Akina, ele se torna uma lenda do drift, enfrentando pilotos ferozes em batalhas noturnas de tirar o fôlego.','1995-07-17','2013-06-29','finalizada','initial-d'),(2,'Chainsaw Man','Em um mundo onde demônios nascem dos medos humanos, Denji — um caçador de demônios falido — renasce com uma motosserra no peito e um destino sangrento nas mãos. Violento, caótico e surpreendentemente emotivo.','2018-12-03',NULL,'ativa','chainsaw-man'),(3,'Kaiju N.° 8','Em um Japão assolado por monstros gigantes chamados kaijus, uma força especial luta para proteger a humanidade. Com trajes feitos dos próprios inimigos, heróis enfrentam ameaças colossais — e Kafka Hibino está prestes a mudar tudo.','2020-07-03',NULL,'ativa','kaiju-n-8'),(4,'One-Punch Man','Saitama é um herói tão poderoso que derrota qualquer inimigo com um único soco... e está entediado com isso. Uma comédia épica que mistura ação explosiva com crises existenciais hilárias.','2012-06-14',NULL,'ativa','one-punch-man'),(5,'Miss Kobayashi\'s Dragon Maid','A vida da programadora Kobayashi vira de cabeça pra baixo quando uma dragão mágica decide virar sua empregada... e também sua nova família. Uma comédia adorável sobre convivência, magia e afeto improvável.','2013-05-25',NULL,'ativa','miss-kobayashis-dragon-maid'),(6,'Nichijou','O cotidiano nunca foi tão absurdo! Em um mundo onde o inesperado é rotina, três garotas vivem situações hilárias, surreais e maravilhosamente sem sentido — tudo com um toque caótico de fofura.','2007-07-26',NULL,'hiato','nichijou');
+INSERT INTO `colecao` VALUES (1,'Initial D','Takumi Fujiwara parece só um entregador de tofu… até entrar no volante. Nas montanhas de Akina, ele se torna uma lenda do drift, enfrentando pilotos ferozes em batalhas noturnas de tirar o fôlego.','1995-07-17','2013-06-29','finalizada','initial-d'),(2,'Chainsaw Man','Em um mundo onde demônios nascem dos medos humanos, Denji — um caçador de demônios falido — renasce com uma motosserra no peito e um destino sangrento nas mãos. Violento, caótico e surpreendentemente emotivo.','2018-12-03',NULL,'ativa','chainsaw-man'),(3,'Kaiju N.° 8','Em um Japão assolado por monstros gigantes chamados kaijus, uma força especial luta para proteger a humanidade. Com trajes feitos dos próprios inimigos, heróis enfrentam ameaças colossais — e Kafka Hibino está prestes a mudar tudo.','2020-07-03',NULL,'ativa','kaiju-n-8'),(4,'One-Punch Man','Saitama é um herói tão poderoso que derrota qualquer inimigo com um único soco... e está entediado com isso. Uma comédia épica que mistura ação explosiva com crises existenciais hilárias.','2012-06-14',NULL,'ativa','one-punch-man'),(5,'Miss Kobayashi\'s Dragon Maid','A vida da programadora Kobayashi vira de cabeça pra baixo quando uma dragão mágica decide virar sua empregada... e também sua nova família. Uma comédia adorável sobre convivência, magia e afeto improvável.','2013-05-25',NULL,'ativa','miss-kobayashis-dragon-maid'),(6,'Nichijou','O cotidiano nunca foi tão absurdo! Em um mundo onde o inesperado é rotina, três garotas vivem situações hilárias, surreais e maravilhosamente sem sentido — tudo com um toque caótico de fofura.','2007-07-26',NULL,'hiato','nichijou'),(7,'Adeus, Eri','“Eu quero que você filme a minha morte...” Yuuta começa a produzir um filme a pedido de sua mãe doente. Entretanto, após a morte dela, o jovem decide tirar sua vida e acaba topando com uma garota misteriosa chamada Eri.Os dois começam a produzir um filme juntos, porém, ela guarda um segredo…Essa é uma história sobre a juventude e a força do cinema onde realidade e ficção se misturam de forma explosiva!!','2022-07-01','2022-07-01','finalizada','adeus-eri');
 /*!40000 ALTER TABLE `colecao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-03 22:33:44
+-- Dump completed on 2025-05-18 21:08:40

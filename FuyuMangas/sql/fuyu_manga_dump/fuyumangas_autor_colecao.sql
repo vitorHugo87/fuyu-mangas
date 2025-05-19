@@ -16,31 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `carrinho`
+-- Table structure for table `autor_colecao`
 --
 
-DROP TABLE IF EXISTS `carrinho`;
+DROP TABLE IF EXISTS `autor_colecao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carrinho` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `id_usuario` int DEFAULT NULL,
-  `id_manga` int DEFAULT NULL,
-  `quantidade` int DEFAULT '1',
-  `data_adicionado` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_manga` (`id_manga`)
+CREATE TABLE `autor_colecao` (
+  `id_autor` int NOT NULL,
+  `id_colecao` int NOT NULL,
+  KEY `id_autor` (`id_autor`),
+  KEY `id_colecao` (`id_colecao`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `carrinho`
+-- Dumping data for table `autor_colecao`
 --
 
-LOCK TABLES `carrinho` WRITE;
-/*!40000 ALTER TABLE `carrinho` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carrinho` ENABLE KEYS */;
+LOCK TABLES `autor_colecao` WRITE;
+/*!40000 ALTER TABLE `autor_colecao` DISABLE KEYS */;
+INSERT INTO `autor_colecao` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(2,7);
+/*!40000 ALTER TABLE `autor_colecao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

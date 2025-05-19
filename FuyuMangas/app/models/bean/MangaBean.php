@@ -5,7 +5,7 @@
         private ?int $id;
 		private string $tituloEng;
         private string $tituloJap;
-        private ?AutorBean $autor;
+        private array $autores;
 		private ?ColecaoBean $colecao;
         private string $editora;
         private int $paginas;
@@ -41,7 +41,7 @@
 			$this->ativo = $dados['ativo'] ?? false;
 
 			// Dados que devem vir como objetos
-			$this->autor = $dados['autor'] ?? null;
+			$this->autores = $dados['autores'] ?? [];
 			$this->colecao = $dados['colecao'] ?? null;
 			$this->categorias = $dados['categorias'] ?? [];
 		}
@@ -70,12 +70,12 @@
 			$this->tituloEng = $tituloEng;
 		}
 
-		public function getAutor(): ?AutorBean {
-			return $this->autor;
+		public function getAutores(): array {
+			return $this->autores;
 		}
 
-		public function setAutor(?AutorBean $autor): void {
-			$this->autor = $autor;
+		public function setAutores(array $autores): void {
+			$this->autores = $autores;
 		}
 
 		public function getColecao(): ?ColecaoBean {

@@ -41,7 +41,7 @@
             </div>
         </nav>
 
-        <div class="container d-flex flex-grow-1">
+        <div class="container d-flex flex-grow-1 text-light">
             <?php require __DIR__ . "/../" . $view . ".php"; ?>
         </div>
 
