@@ -1,6 +1,7 @@
 <?php
 require_once ABS_APP_PATH . '/core/Model.php';
 require_once ABS_APP_PATH . '/models/bean/CriadorBean.php';
+require_once ABS_APP_PATH . '/models/dao/MangaCriadorDAO.php';
 require_once ABS_APP_PATH . '/models/dao/ColecaoDAO.php';
 
 class CriadorDAO extends Model {
@@ -8,6 +9,7 @@ class CriadorDAO extends Model {
         $stmt = $this->db->query("SELECT * FROM criador");
         $criadores = [];
 
+        $mangaCriadorDAO = new MangaCriadorDAO();
         $colecaoDAO = new ColecaoDAO();
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -15,6 +17,8 @@ class CriadorDAO extends Model {
             $row['redes_sociais'] = json_decode($row['redes_sociais'], true);
 
             $row['colecoes'] = $colecaoDAO->buscarPorCriadorId($row['id']);
+
+            $row['papeis'] = $mangaCriadorDAO->buscarTodosPapeisDoCriador($row['id']);
 
             $criadores[] = new CriadorBean($row);
         }
@@ -41,11 +45,14 @@ class CriadorDAO extends Model {
         $stmt->execute([$mangaId]);
         $criadores = [];
 
+        $mangaCriadorDAO = new MangaCriadorDAO();
         $colecaoDAO = new ColecaoDAO();
 
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Decodifica o JSON das Redes Sociais em um Array Associativo
             $row['redes_sociais'] = json_decode($row['redes_sociais'], true);
+
+            $row['papeis'] = $mangaCriadorDAO->buscarPapeisDoCriadorPorMangaId($row['id'], $mangaId);
 
             $row['colecoes'] = $colecaoDAO->buscarPorCriadorId($row['id']);
 
