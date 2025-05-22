@@ -1,11 +1,11 @@
 <?php
-	require_once __DIR__ . '/AutorBean.php';
+	require_once __DIR__ . '/CriadorBean.php';
 	require_once __DIR__ . '/ColecaoBean.php';
     class MangaBean {
         private ?int $id;
 		private string $tituloEng;
         private string $tituloJap;
-        private array $autores;
+        private array $criadores;
 		private ?ColecaoBean $colecao;
         private string $editora;
         private int $paginas;
@@ -41,7 +41,7 @@
 			$this->ativo = $dados['ativo'] ?? false;
 
 			// Dados que devem vir como objetos
-			$this->autores = $dados['autores'] ?? [];
+			$this->criadores = $dados['criadores'] ?? [];
 			$this->colecao = $dados['colecao'] ?? null;
 			$this->categorias = $dados['categorias'] ?? [];
 		}
@@ -70,12 +70,12 @@
 			$this->tituloEng = $tituloEng;
 		}
 
-		public function getAutores(): array {
-			return $this->autores;
+		public function getCriadores(): array {
+			return $this->criadores;
 		}
 
-		public function setAutores(array $autores): void {
-			$this->autores = $autores;
+		public function setCriadores(array $criadores): void {
+			$this->criadores = $criadores;
 		}
 
 		public function getColecao(): ?ColecaoBean {

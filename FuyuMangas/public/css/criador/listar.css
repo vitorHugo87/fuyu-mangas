@@ -1,24 +1,24 @@
-#link-autor {
+#link-criador {
     background-color: rgba(79, 92, 122, 0.3);
     color: var(--caramelo-brilho);
     border-radius: var(--bs-border-radius);
     transition: 0.5s;
 }
 
-#link-autor:hover {
+#link-criador:hover {
     background-color: rgba(79, 92, 122, 0.5);
     color: var(--caramelo-brilho-hover);
     border-radius: 0px;
 }
 
-#link-autor .destaque {
+#link-criador .destaque {
     background-color: var(--caramelo-brilho);
     color: var(--cinza-noturno);
     border-bottom-right-radius: 0.50rem;
     transition: 0.5s;
 }
 
-#link-autor:hover .destaque {
+#link-criador:hover .destaque {
     background-color: var(--caramelo-brilho-hover);
 }
 

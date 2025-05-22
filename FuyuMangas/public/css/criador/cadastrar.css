@@ -27,26 +27,26 @@
     box-shadow: 0px 0px 5px .25rem var(--caramelo-brilho);
 }
 
-#link-autor, #link-autor-large {
+#link-criador, #link-criador-large {
     background-color: rgba(79, 92, 122, 0.3);
     color: var(--caramelo-brilho);
     border-radius: var(--bs-border-radius);
     transition: 0.5s;
 }
 
-#link-autor:hover, #link-autor-large:hover {
+#link-criador:hover, #link-criador-large:hover {
     background-color: rgba(79, 92, 122, 0.5);
     color: var(--caramelo-brilho-hover);
     border-radius: 0px;
 }
 
-#link-autor-large .destaque {
+#link-criador-large .destaque {
     background-color: var(--caramelo-brilho);
     color: var(--cinza-noturno);
     transition: 0.5s;
 }
 
-#link-autor-large:hover .destaque {
+#link-criador-large:hover .destaque {
     background-color: var(--caramelo-brilho-hover);
 }
 
@@ -55,7 +55,7 @@
     border-bottom-right-radius: var(--bs-border-radius);
 }
 
-#link-autor-large:hover .rounded-bottom-right {
+#link-criador-large:hover .rounded-bottom-right {
     border-top-left-radius: 0px
 }
 

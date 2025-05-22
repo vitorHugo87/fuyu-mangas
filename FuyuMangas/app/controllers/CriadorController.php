@@ -1,22 +1,22 @@
 <?php
 require_once ABS_APP_PATH . '/core/Controller.php';
-require_once ABS_APP_PATH . '/models/dao/AutorDAO.php';
+require_once ABS_APP_PATH . '/models/dao/CriadorDAO.php';
 
-class AutorController extends Controller {
-    private AutorDAO $autorDAO;
+class CriadorController extends Controller {
+    private CriadorDao $criadorDAO;
 
     public function __construct() {
-        $this->autorDAO = new AutorDAO();
+        $this->criadorDAO = new CriadorDAO();
     }
 
     public function cadastrar(): void {
-        $this->render("autor/cadastrar", ['css' => [BASE_URL . '/css/autor/cadastrar.css'],
-            'js' => [BASE_URL . '/js/autor/cadastrar.js']
+        $this->render("criador/cadastrar", ['css' => [BASE_URL . '/css/criador/cadastrar.css'],
+            'js' => [BASE_URL . '/js/criador/cadastrar.js']
         ]);
     }
 
     public function salvar(): void {
-        // Recebe os dados do $_POST e $_FILES, valida, e chama $this->autorDAO->adicionar($autor);
+        // Recebe os dados do $_POST e $_FILES, valida, e chama $this->criadorDAO->adicionar($criador);
         $dados['nome'] = trim($_POST['nome'] ?? '');
         $dados['data_nascimento'] = $_POST['data_nascimento' ?? ''];
         $dados['biografia'] = trim($_POST['biografia'] ?? '');
@@ -44,15 +44,15 @@ class AutorController extends Controller {
 
             // Gera um nome único para evitar conflitos
             $extensao = pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-            $nomeArquivo = 'autor_' . time() . '_' . bin2hex(random_bytes(5)) . '.' . $extensao;
+            $nomeArquivo = 'criador_' . time() . '_' . bin2hex(random_bytes(5)) . '.' . $extensao;
 
             // Define o caminho para salvar a imagem
-            $caminhoDestino = __DIR__ . '/../../public/img/autores_pfps/' . $nomeArquivo;
+            $caminhoDestino = ABSPATH . '/public/img/criadores_pfps/' . $nomeArquivo;
 
             // Move o arquivo da pasta temporária para a pasta correta
             if (move_uploaded_file($arquivo['tmp_name'], $caminhoDestino)) {
                 // Caminho que será salvo no banco de dados (relativo ao site)
-                $dados['foto_perfil'] = 'img/autores_pfps/' . $nomeArquivo;
+                $dados['foto_perfil'] = "img/criadores_pfps/$nomeArquivo";
             } else {
                 die('Ops! Tivemos um erro ao mover o arquivo de imagem..');
             }
@@ -60,24 +60,24 @@ class AutorController extends Controller {
             die('Ops, tivemos um problema com o upload da capa..');
         }
 
-        // Cria um objeto AutorBean
-        $autor = new AutorBean($dados);
+        // Cria um objeto CriadorBean
+        $criador = new CriadorBean($dados);
 
-        // Passa o objeto para o models/dao/AutorDAO.php
-        $this->autorDAO->adicionar($autor);
+        // Passa o objeto para o models/dao/CriadorDAO.php
+        $this->criadorDAO->adicionar($criador);
 
-        die('Autor Cadastrado com sucesso!');
+        die('Criador Cadastrado com sucesso!');
         // Redireciona para a tela inicial
         //$this->render("layouts/main", []);
     }
 
     public function listar(): void {
-        // Busca todos os autores
-        $autores = $this->autorDAO->listarTodos();
+        // Busca todos os criadores
+        $criadores = $this->criadorDAO->listarTodos();
 
         // Redireciona
-        $this->render("autor/listar", ['autores' => $autores, 
-            'css' => [BASE_URL . '/css/autor/listar.css'],
-            'js' => [BASE_URL . '/js/autor/listar.js']]);
+        $this->render("criador/listar", ['criadores' => $criadores, 
+            'css' => [BASE_URL . '/css/criador/listar.css'],
+            'js' => [BASE_URL . '/js/criador/listar.js']]);
     }
 }

@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     elementos.forEach(el => {
         const colecoes = JSON.parse(el.dataset.colecoes);
 
-        if (!colecoes.length) return;
+        if (!colecoes.length) {
+            el.textContent = '-';
+            return;
+        }
         else if (colecoes.length === 1) {
             el.textContent = colecoes[0];
             return;

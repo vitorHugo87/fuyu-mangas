@@ -1,6 +1,8 @@
 ----------------------------------------------------------
 # PRIORIDADE
 
+-> Arrumar o Cadastro de Mangas (Problema com Criador)
+
 -> Refatorar Codigo
 
 -> Arrumar campo Autor do cadastro de manga 
@@ -15,6 +17,7 @@ Atualizar cadastro de coleção, ColecaoBean e ColecaoDAO
 ----------------------------------------------------------
 # CADASTROS
 
+-> Mudar Preview do cadastro de Criador
 -> Validação dos inputs de datas (Nascimento, Lançamento, Etc..).
 -> Travar Ratio das imagens logo no cadastro 
 (1:1 para foto de perfil por exemplo)
@@ -129,3 +132,4 @@ haja empate, o desempate será feito pela receita total gerada).
 -> Record of Ragnarok
 -> Slam Dunk
 -> Kuroko no Basket
+-> Eyeshield 21

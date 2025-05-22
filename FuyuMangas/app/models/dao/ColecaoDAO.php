@@ -21,9 +21,9 @@ class ColecaoDAO extends Model {
         return null; // Caso não encontre nenhuma colecao
     }
 
-    public function buscarPorAutorId(int $autorId): array {
-        $stmt = $this->db->prepare('SELECT c.* FROM colecao c INNER JOIN autor_colecao ac on c.id = ac.id_colecao WHERE ac.id_autor = ?');
-        $stmt->execute([$autorId]);
+    public function buscarPorCriadorId(int $criadorId): array {
+        $stmt = $this->db->prepare('SELECT c.* FROM colecao c INNER JOIN criador_colecao cc on c.id = cc.id_colecao WHERE cc.id_criador = ?');
+        $stmt->execute([$criadorId]);
 
         $colecoes = [];
 

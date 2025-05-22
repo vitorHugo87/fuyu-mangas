@@ -23,7 +23,7 @@
 
                                     <p class="card-text text-body-secondary d-inline">
                                         <small>
-                                            <?= implode(', ', array_map(fn($autor) => $autor->getNome(), $manga->getAutores())); ?>
+                                            <?= implode(', ', array_map(fn($criador) => $criador->getNome(), $manga->getCriadores())); ?>
                                         </small>
                                     </p>
                                     <p class="card-text d-inline"><small class="text-body-secondary"> |

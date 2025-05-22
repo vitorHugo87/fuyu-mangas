@@ -8,22 +8,22 @@ require_once ABS_APP_PATH . '/core/Controller.php';
 class MangaController extends Controller {
     private $mangaDAO;
     private $categoriaDAO;
-    private $autorDAO;
+    private $criadorDAO;
     private $colecaoDAO;
 
     public function __construct() {
         $this->mangaDAO = new MangaDAO();
         $this->categoriaDAO = new CategoriaDAO();
-        $this->autorDAO = new AutorDAO();
+        $this->criadorDAO = new CriadorDAO();
         $this->colecaoDAO = new ColecaoDAO();
     }
 
     // Mostra o formulário de cadastro
     public function cadastrar() {
-        // Pega todos os autores para o checkbox de autor
-        $autores = $this->autorDAO->listarTodos();
-        // Ordena os autores pelo nome
-        usort($autores, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
+        // Pega todos os criadores para o checkbox de criador
+        $criadores = $this->criadorDAO->listarTodos();
+        // Ordena os criadores pelo nome
+        usort($criadores, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
 
         // Pega todas as categorias para usar nos checkboxs de categorias
         $categorias = $this->categoriaDAO->listarTodos();
@@ -36,7 +36,7 @@ class MangaController extends Controller {
         usort($colecoes, function($a, $b) {return strcmp($a->getNome(), $b->getNome());});
 
         // Redireciona para a tela de cadastro de mangás
-        $this->render("manga/cadastrar", ['autores' => $autores, 
+        $this->render("manga/cadastrar", ['criadores' => $criadores, 
             'colecoes' => $colecoes,
             'categorias' => $categorias, 
             'css' =>[BASE_URL . '/css/manga-cadastrar.css'],

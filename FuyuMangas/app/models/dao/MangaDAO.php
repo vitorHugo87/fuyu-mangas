@@ -3,8 +3,9 @@
     require_once ABS_APP_PATH . '/models/bean/MangaBean.php';
     require_once ABS_APP_PATH . '/models/bean/CategoriaBean.php';
     require_once ABS_APP_PATH . '/models/dao/CategoriaDAO.php';
-    require_once ABS_APP_PATH . '/models/dao/AutorDAO.php';
+    require_once ABS_APP_PATH . '/models/dao/CriadorDAO.php';
     require_once ABS_APP_PATH . '/models/dao/ColecaoDAO.php';
+
 
     class MangaDAO extends Model {
         // Listar apenas os mangás ativos
@@ -12,12 +13,12 @@
             $stmt = $this->db->query("SELECT * FROM manga WHERE ativo = 1");
             $mangas = [];
 
-            $autorDAO = new AutorDAO();
+            $criadorDAO = new CriadorDAO();
             $colecaoDAO = new ColecaoDAO();
             $categoriaDAO = new CategoriaDAO();
 
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $row['autores'] = $autorDAO->buscarPorMangaId($row['id']);
+                $row['criadores'] = $criadorDAO->buscarPorMangaId($row['id']);
                 $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
                 $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
                 $mangas[] = new MangaBean($row);
@@ -35,11 +36,11 @@
 
             if(!$row) return null;
 
-            $autorDAO = new AutorDAO();
+            $criadorDAO = new CriadorDAO();
             $colecaoDAO = new ColecaoDAO();
             $categoriaDAO = new CategoriaDAO();
 
-            $row['autores'] = $autorDAO->buscarPorMangaId($row['id']);
+            $row['criadores'] = $criadorDAO->buscarPorMangaId($row['id']);
             $row['colecao'] = $colecaoDAO->buscarPorId($row['id_colecao']);
             $row['categorias'] = $categoriaDAO->buscarPorMangaId($row['id']);
 

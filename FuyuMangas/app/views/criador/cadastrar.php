@@ -1,6 +1,6 @@
 <div class="container-md text-light">
-    <form id="form-cadastrar-autor" action="<?= BASE_URL ?>/autor/salvar" method="POST" enctype="multipart/form-data">
-        <h2 class="mb-2">Cadastrar Autor</h2>
+    <form id="form-cadastrar-criador" action="<?= BASE_URL ?>/criador/salvar" method="POST" enctype="multipart/form-data">
+        <h2 class="mb-2">Cadastrar Criador</h2>
 
         <div class="row">
             <!-- Inputs -->
@@ -85,7 +85,7 @@
             <div class="col-md-6">
                 <!-- Preview Detalhado -->
                 <div class="mx-auto p-0 w-50 mb-5">
-                    <a href="#" class="d-block text-decoration-none position-relative" id="link-autor-large">
+                    <a href="#" class="d-block text-decoration-none position-relative" id="link-criador-large">
                         <!-- Top 5 Absoluto -->
                         <div class="destaque position-absolute top-0 start-0 px-2 py-1 rounded-bottom-right">
                             <p class="fw-semibold mb-0">Top 1</p>
@@ -94,10 +94,10 @@
                         <!-- Conteúdo -->
                         <div class="p-2 d-grid">
                             <img id="profile-img-large" class="img-fluid rounded-circle p-2"
-                                src="../img/autores_pfps/default_pfp.jpg" alt="">
+                                src="../img/criadores_pfps/default_pfp.jpg" alt="">
                             <div class="d-flex mx-auto align-items-center">
                                 <img src="#" id="preview-flag" class="img-fluid rounded d-none me-2" alt="">
-                                <p id="preview-nome-large" class="fw-semibold fs-5 mb-0">Nome do Autor</p>
+                                <p id="preview-nome-large" class="fw-semibold fs-5 mb-0">Nome do Criador</p>
                             </div>
                             <p class="mb-0 mx-auto">Coleção 1, Coleção 2, Coleção 3...</p>
                         </div>
@@ -108,13 +108,13 @@
 
                 <!-- Preview Basico -->
                 <div class="mx-auto p-0 w-50">
-                    <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
+                    <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-criador">
                         <img id="profile-img-small" class="img-fluid rounded-circle me-3"
-                            src="../img/autores_pfps/default_pfp.jpg" alt=""
+                            src="../img/criadores_pfps/default_pfp.jpg" alt=""
                             style="width: 50px; height: 50px; object-fit: cover;">
                         <div>
-                            <p class="fw-bold mb-1 mb-0">Autor</p>
-                            <p id="preview-nome-small" class="mb-0">Nome do Autor</p>
+                            <p class="fw-bold mb-1 mb-0">Criador</p>
+                            <p id="preview-nome-small" class="mb-0">Nome do Criador</p>
                         </div>
                     </a>
                 </div>
@@ -126,7 +126,7 @@
             <div class="d-flex justify-content-center mt-5">
                 <button type="button" class="btn btn-light mx-2" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop">Cancelar</button>
-                <button type="submit" class="btn btn-caramelo mx-2">Cadastrar Autor</button>
+                <button type="submit" class="btn btn-caramelo mx-2">Cadastrar Criador</button>
             </div>
             <!-- Fim Botões Enviar / Cancelar -->
         </div>
@@ -145,7 +145,7 @@
                 <div class="modal-body">
                     <p class="mb-0">Se você cancelar agora, <span class="fw-bold">todo o cadastro será
                             perdido</span>.</p>
-                    <p class="mb-0">Tem certeza que quer abandonar esse autor tão promissor?</p>
+                    <p class="mb-0">Tem certeza que quer abandonar esse criador tão promissor?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Não, voltar pro
