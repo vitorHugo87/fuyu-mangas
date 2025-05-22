@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/../config/config.php';
+    require_once ABS_APP_PATH . '/config/config.php';
 
     class Model {
         protected $db;

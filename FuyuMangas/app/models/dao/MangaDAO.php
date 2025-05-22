@@ -1,10 +1,10 @@
 <?php
-    require_once __DIR__ . '/../../core/Model.php';
-    require_once __DIR__ . '/../bean/MangaBean.php';
-    require_once __DIR__ . '/../bean/CategoriaBean.php';
-    require_once __DIR__ . '/../dao/CategoriaDAO.php';
-    require_once __DIR__ . '/AutorDAO.php';
-    require_once __DIR__ . '/ColecaoDAO.php';
+    require_once ABS_APP_PATH . '/core/Model.php';
+    require_once ABS_APP_PATH . '/models/bean/MangaBean.php';
+    require_once ABS_APP_PATH . '/models/bean/CategoriaBean.php';
+    require_once ABS_APP_PATH . '/models/dao/CategoriaDAO.php';
+    require_once ABS_APP_PATH . '/models/dao/AutorDAO.php';
+    require_once ABS_APP_PATH . '/models/dao/ColecaoDAO.php';
 
     class MangaDAO extends Model {
         // Listar apenas os mangás ativos

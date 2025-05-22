@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../core/Model.php';
-require_once __DIR__ . '/../bean/AutorBean.php';
-require_once __DIR__ . '/ColecaoDAO.php';
+require_once ABS_APP_PATH . '/core/Model.php';
+require_once ABS_APP_PATH . '/models/bean/AutorBean.php';
+require_once ABS_APP_PATH . '/models/dao/ColecaoDAO.php';
 
 class AutorDAO extends Model {
     public function listarTodos(): array {

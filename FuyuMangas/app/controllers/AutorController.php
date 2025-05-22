@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../core/Controller.php';
-require_once __DIR__ . '/../models/dao/AutorDAO.php';
+require_once ABS_APP_PATH . '/core/Controller.php';
+require_once ABS_APP_PATH . '/models/dao/AutorDAO.php';
 
 class AutorController extends Controller {
     private AutorDAO $autorDAO;

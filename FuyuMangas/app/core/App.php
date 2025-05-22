@@ -7,7 +7,7 @@ class App {
     public function __construct() {
         $url = $this->parseURL();
 
-        $controllersPath = __DIR__ . '/../controllers/';
+        $controllersPath = ABS_APP_PATH . '/controllers/';
 
         if (!empty($url[0]) && file_exists($controllersPath . ucfirst($url[0]) . 'Controller.php')) {
             $this->controller = ucfirst($url[0]) . 'Controller';

@@ -1,6 +1,8 @@
 ----------------------------------------------------------
 # PRIORIDADE
 
+-> Refatorar Codigo
+
 -> Arrumar campo Autor do cadastro de manga 
 (Permitir multiplos autores)
 -> Colocar select de autores no cadastro de coleção 

@@ -42,7 +42,7 @@
         </nav>
 
         <div class="container d-flex flex-grow-1 text-light">
-            <?php require __DIR__ . "/../" . $view . ".php"; ?>
+            <?php require ABS_APP_PATH . "/views/" . $view . ".php"; ?>
         </div>
 
         <footer class="footer text-center text-light mt-auto p-3">

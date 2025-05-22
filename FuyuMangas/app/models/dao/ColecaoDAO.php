@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../../core/Model.php';
-require_once __DIR__ . '/../bean/ColecaoBean.php';
+require_once ABS_APP_PATH . '/core/Model.php';
+require_once ABS_APP_PATH . '/models/bean/ColecaoBean.php';
 
 class ColecaoDAO extends Model {
     public function listarTodos(): array {

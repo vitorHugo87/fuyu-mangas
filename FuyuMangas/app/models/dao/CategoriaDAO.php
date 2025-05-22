@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../bean/CategoriaBean.php';
+require_once ABS_APP_PATH . '/models/bean/CategoriaBean.php';
 class CategoriaDAO extends Model {
     
     public function listarTodos() {

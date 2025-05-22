@@ -1,0 +1,54 @@
+FuyuMangas/
+├── Docs/
+│   ├── Diagramas/
+│   │   ├── Fuyu_ER_v6.png
+│   │   └── Fuyu_ER_v6.drawio
+│   └── todo.txt
+└── FuyuMangas/
+    ├── app/
+    │   ├── config/
+    │   │   └── config.php
+    │   ├── controllers/
+    │   │   ├── AutorController.php
+    │   │   ├── ColecaoController.php
+    │   │   ├── HomeController.php
+    │   │   └── MangaController.php
+    │   ├── core/
+    │   │   ├── App.php
+    │   │   ├── Controller.php
+    │   │   └── Model.php
+    │   ├── models/
+    │   │   ├── bean/
+    │   │   │   ├── AutorBean.php
+    │   │   │   ├── CategoriaBean.php
+    │   │   │   ├── ColecaoBean.php
+    │   │   │   └── MangarBean.php
+    │   │   └── dao/
+    │   │       ├── AutorDAO.php
+    │   │       ├── CategoriaDAO.php
+    │   │       ├── ColecaoDAO.php
+    │   │       └── MangarDAO.php
+    │   └── views/
+    │       ├── autor/
+    │       │   ├── cadastrar.php
+    │       │   └── listar.php
+    │       ├── colecao/
+    │       │   └── cadastrar.php
+    │       ├── layouts/
+    │       │   └── main.php
+    │       └── manga/
+    │           ├── cadastrar.php
+    │           ├── detalhes.php
+    │           └── listar.php
+    ├── public/
+    │   ├── css/
+    │   │   └── ...
+    │   ├── img/
+    │   │   └── ...
+    │   ├── js/
+    │   │   └── ...
+    │   ├── .htaccess
+    │   └── index.php
+    └── sql/
+        └── fuyu_manga_dump/
+            └── ...
