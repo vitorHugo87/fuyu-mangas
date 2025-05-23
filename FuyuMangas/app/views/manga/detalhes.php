@@ -19,21 +19,29 @@
             <img src="../../<?= $manga->getImagem() ?>" class="img-fluid shadow-lg" alt="">
             <!-- Fim Preview da Capa -->
             <hr>
-            <!-- Autores -->
-            <?php foreach ($manga->getAutores() as $autor): ?>
-                <div class="p-0">
+            <!-- Criadores -->
+            <?php foreach ($manga->getCriadores() as $criador): ?>
+                <?php
+                $p = $criador->getPapeis();
+                $papeis = [];
+                if (in_array('Autor', $p) && in_array('Roteirista', $p))
+                    $papeis[] = 'Autor';
+                if (in_array('Ilustrador', $p) && in_array('Capista', $p))
+                    $papeis[] = 'Ilustrador';
+                $papeis = $criador->agruparPapeis($criador->getPapeis());
+                ?>
+                <div class="p-0 criadores">
                     <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
-                        <img class="img-fluid rounded-circle me-3"
-                            src="<?= BASE_URL . "/" . $autor->getFotoPerfil() ?>" alt=""
-                            style="width: 50px; height: 50px; object-fit: cover;">
+                        <img class="img-fluid rounded-circle me-3" src="<?= BASE_URL . '/' . $criador->getFotoPerfil() ?>"
+                            alt="" style="width: 50px; height: 50px; object-fit: cover;">
                         <div>
-                            <p class="fw-bold mb-1 mb-0">Autor</p>
-                            <p class="mb-0"><?= $autor->getNome() ?></p>
+                            <p class="fw-bold mb-1 mb-0"><?= implode(' / ', $papeis) ?></p>
+                            <p class="mb-0"><?= $criador->getNome() ?></p>
                         </div>
                     </a>
                 </div>
             <?php endforeach; ?>
-            <!-- Fim Autores -->
+            <!-- Fim Criadores -->
         </div>
         <!-- Fim Preview da Capa / Autor -->
 
@@ -58,13 +66,19 @@
             <!-- Fim Nota / Link Avaliações -->
 
             <!-- Descrição -->
-            <div id="desc-container" class="mb-3">
+            <div id="desc-container" class="desc-container">
                 <p class="mb-0"><?= $manga->getDescricao() ?></p>
             </div>
+            <div>
+                <a href="#" id="ler-mais">Ler Mais</a>
+            </div>
+
+            <!-- Div auxiliar para função de Ler Mais usada no detalhes.js -->
+            <div id="clone-desc-container" style="height: 0px;"></div>
             <!-- Fim Descrição -->
 
             <!-- Categorias -->
-            <div class="mb-3">
+            <div class="my-3">
                 <ul id="categorias" class="d-flex m-0 p-0">
                     <?php foreach ($manga->getCategorias() as $cat): ?>
                         <li><a class="rounded-2 py-1 px-2"
@@ -118,7 +132,7 @@
             <!-- Fim Linha Páginas / Editora / Faixa Etária / Idioma -->
 
             <!-- Div com Preço / Estoque / Form Carrinho -->
-            <div class="row mt-auto">
+            <div class="row">
                 <!-- Div com Preço / Estoque / Form Carrinho -->
                 <div class="col-md-5">
                     <!-- Linha Preço / Estoque -->

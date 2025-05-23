@@ -41,7 +41,7 @@ class CriadorDAO extends Model {
     }
 
     public function buscarPorMangaId(int $mangaId): array {
-        $stmt = $this->db->prepare('SELECT c.* FROM criador c INNER JOIN manga_criador mc ON c.id = mc.id_criador WHERE mc.id_manga = ?');
+        $stmt = $this->db->prepare('SELECT c.* FROM criador c INNER JOIN manga_criador mc ON c.id = mc.id_criador WHERE mc.id_manga = ? GROUP BY c.id');
         $stmt->execute([$mangaId]);
         $criadores = [];
 

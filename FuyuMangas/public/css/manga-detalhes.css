@@ -30,13 +30,27 @@ li.breadcrumb-item::before {
     color: var(--caramelo-brilho-hover);
 }
 
-#desc-container {
+.desc-container {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.3s ease;
+}
+
+.desc-container.expanded {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+}
+
+#ler-mais {
+    display: none;
+    cursor: pointer;
+    color: var(--caramelo-brilho);
+    font-weight: 500;
 }
 
 #link-autor {
@@ -50,6 +64,10 @@ li.breadcrumb-item::before {
     background-color: rgba(79, 92, 122, 0.5);
     color: var(--caramelo-brilho-hover);
     border-radius: 0px;
+}
+
+.criadores:not(:last-child) {
+    margin-bottom: .5rem;
 }
 
 #categorias {

@@ -113,7 +113,7 @@ class MangaController extends Controller {
             "css" => [BASE_URL . "/css/manga-listar.css"]]);
     }
 
-    public function detalhe($mangaId) {
+    public function detalhes($mangaId) {
         // Busca o mangá pelo ID
         $manga = $this->mangaDAO->buscarPorId($mangaId);
 

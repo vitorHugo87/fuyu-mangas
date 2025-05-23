@@ -107,6 +107,41 @@ class CriadorBean {
         $this->colecoes = $colecoes;
     }
 
+    /**
+     * Agrupa os papeis de um criador de forma condicional.
+     *
+     * - Se o criador tiver apenas um papel, mostra esse papel como está.
+     * - Se tiver múltiplos papeis dentro de uma mesma categoria, agrupa (ex: 'Autor' + 'Roteirista' => 'Autor').
+     * - Se os papeis forem de categorias diferentes, mostra ambos agrupados.
+     *
+     * @param array $papeisOriginais Lista de papeis do criador (ex: ['Roteirista', 'Capista'])
+     * @return array Lista formatada (ex: ['Roteirista', 'Ilustrador'])
+     */
+    public function agruparPapeis(array $papeisOriginais): array {
+        // Mapeia os papeis em grupos amplos
+        $mapaPapeis = [
+            'Autor' => ['Autor', 'Roteirista'],
+            'Ilustrador' => ['Ilustrador', 'Capista'],
+        ];
+
+        $papeisFormatados = [];
+
+        foreach ($mapaPapeis as $grupo => $aliases) {
+            // Encontra os papeis originais que pertencem a este grupo
+            $papeisNoGrupo = array_intersect($papeisOriginais, $aliases);
+
+            if (count($papeisNoGrupo) > 1) {
+                // Se tiver mais de um papel do mesmo grupo, exibe como o grupo (ex: "Autor")
+                $papeisFormatados[] = $grupo;
+            } elseif (count($papeisNoGrupo) === 1) {
+                // Se tiver só um, mantém o nome original (ex: "Roteirista")
+                $papeisFormatados[] = reset($papeisNoGrupo);
+            }
+        }
+
+        return $papeisFormatados;
+    }
+
     public function getPapeis(): ?array {
         return $this->papeis;
     }

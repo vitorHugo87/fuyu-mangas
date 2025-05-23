@@ -6,12 +6,12 @@
             <?php
                 $p = $criador->getPapeis();
                 $papeis = [];
-                if (in_array('Autor', $p) || in_array('Roteirista', $p))
+                if (in_array('Autor', $p) && in_array('Roteirista', $p))
                     $papeis[] = 'Autor';
-                if (in_array('Ilustrador', $p) || in_array('Capista', $p))
+                if (in_array('Ilustrador', $p) && in_array('Capista', $p))
                     $papeis[] = 'Ilustrador';
-            ?>
-            
+                ?>
+
             <div class="col-md-3">
                 <!-- Preview Detalhado -->
                 <a href="#" class="d-block text-decoration-none position-relative overflow-hidden shadow" id="link-criador">
