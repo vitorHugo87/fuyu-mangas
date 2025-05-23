@@ -39,8 +39,8 @@ class MangaController extends Controller {
         $this->render("manga/cadastrar", ['criadores' => $criadores, 
             'colecoes' => $colecoes,
             'categorias' => $categorias, 
-            'css' =>[BASE_URL . '/css/manga-cadastrar.css'],
-            'js' => [BASE_URL . '/js/manga-cadastrar.js']
+            'css' =>[PUBLIC_URL . '/css/manga-cadastrar.css'],
+            'js' => [PUBLIC_URL . '/js/manga-cadastrar.js']
         ]);
     }
 
@@ -110,7 +110,7 @@ class MangaController extends Controller {
     public function listar() {
         $mangas = $this->mangaDAO->listarTodosAtivos();
         $this->render("manga/listar", ["mangas" => $mangas,
-            "css" => [BASE_URL . "/css/manga-listar.css"]]);
+            "css" => [PUBLIC_URL . "/css/manga-listar.css"]]);
     }
 
     public function detalhes($mangaId) {
@@ -123,7 +123,7 @@ class MangaController extends Controller {
         }
 
         $this->render("manga/detalhes", ["manga" => $manga,
-            "css" => [BASE_URL . "/css/manga-detalhes.css"],
-            "js" => [BASE_URL . "/js/manga-detalhes.js"]]);
+            "css" => [PUBLIC_URL . "/css/manga-detalhes.css"],
+            "js" => [PUBLIC_URL . "/js/manga-detalhes.js"]]);
     }
 }

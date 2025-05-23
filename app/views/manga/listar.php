@@ -6,10 +6,10 @@
 
             <div>
                 <div class="card p-0 mb-3 shadow rounded overflow-hidden" style="max-width: 540px;">
-                    <a href="<?= BASE_URL ?>/manga/detalhe/<?= $manga->getId() ?>" class="text-decoration-none text-dark">
+                    <a href="<?= BASE_URL ?>manga/detalhes/<?= $manga->getId() ?>" class="text-decoration-none text-dark">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img class="img-fluid" src="<?= "../" . $manga->getImagem() ?>"
+                                <img class="img-fluid" src="<?= PUBLIC_URL . "/" . $manga->getImagem() ?>"
                                     alt="Preview da capa">
                             </div>
 

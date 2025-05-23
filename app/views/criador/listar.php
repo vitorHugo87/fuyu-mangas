@@ -10,7 +10,7 @@
                     $papeis[] = 'Autor';
                 if (in_array('Ilustrador', $p) && in_array('Capista', $p))
                     $papeis[] = 'Ilustrador';
-                ?>
+            ?>
 
             <div class="col-md-3">
                 <!-- Preview Detalhado -->
@@ -26,7 +26,7 @@
                     <!-- Conteúdo -->
                     <div class="p-2 d-grid">
                         <img id="profile-img" class="img-fluid rounded-circle p-2"
-                            src="<?= BASE_URL . '/' . $criador->getFotoPerfil() ?>" alt="">
+                            src="<?= PUBLIC_URL . $criador->getFotoPerfil() ?>" alt="">
                         <div class="mx-auto text-center">
                             <p id="preview-nome" class="fw-semibold fs-5 mb-0"><?= $criador->getNome() ?></p>
 

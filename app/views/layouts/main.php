@@ -16,8 +16,8 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Meus CSS's Globais -->
-     <link rel="stylesheet" href="<?= BASE_URL ?>/css/cores.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/main.css">
+     <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/cores.css">
+    <link rel="stylesheet" href="<?= PUBLIC_URL ?>/css/main.css">
 
     <!-- Meus CSS's -->
     <?php if (isset($css) && is_array($css)): ?>

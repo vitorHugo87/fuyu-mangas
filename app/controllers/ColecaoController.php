@@ -10,8 +10,8 @@ class ColecaoController extends Controller {
     }
 
     public function cadastrar(): void {
-        $this->render('colecao/cadastrar', ['css' => [BASE_URL . '/css/colecao/cadastrar.css'],
-            'js' => [BASE_URL . '/js/colecao/cadastrar.js']
+        $this->render('colecao/cadastrar', ['css' => [PUBLIC_URL . '/css/colecao/cadastrar.css'],
+            'js' => [PUBLIC_URL . '/js/colecao/cadastrar.js']
         ]);
     }
 

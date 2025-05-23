@@ -85,6 +85,10 @@ com a categoria como parâmetro.
 por padrao com '' ou null (Se ficarem com '' acho que cadastra
 no DB, mas o ideal seria não cadastrar com um campo "nulo").
 
+-> Criar Pagina 404 e aplicar lógica de try/catch nas URL's..
+Por exemplo, se eu digitar a URL(http://localhost/FuyuMangas/manga/batata)
+ele lança um erro, o ideal é mostrar a pagina 404
+
 -> Refatorar JS dos cadastros (Tem muito código repetido).
 -> Refatorar paginas HTML (Estrutura e Semântica).
 ----------------------------------------------------------

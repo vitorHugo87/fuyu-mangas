@@ -6,7 +6,9 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // Centraliza a BASE_URL
-define('BASE_URL', 'http://localhost/FuyuMangas/FuyuMangas/public');
+define('BASE_URL', 'http://localhost/FuyuMangas/');
+
+define('PUBLIC_URL', 'http://localhost/FuyuMangas/public/');
 
 // Caminho absoluto do projeto
 define('ABSPATH', dirname(__DIR__, 2));

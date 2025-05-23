@@ -1,5 +1,5 @@
 <div class="container-md text-light">
-    <form id="form-cadastrar-criador" action="<?= BASE_URL ?>/criador/salvar" method="POST" enctype="multipart/form-data">
+    <form id="form-cadastrar-criador" action="<?= BASE_URL ?>criador/salvar" method="POST" enctype="multipart/form-data">
         <h2 class="mb-2">Cadastrar Criador</h2>
 
         <div class="row">

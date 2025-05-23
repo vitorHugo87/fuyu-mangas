@@ -16,7 +16,7 @@
         <!-- Preview da Capa / Autor -->
         <div class="col-md-3">
             <!-- Preview da Capa -->
-            <img src="../../<?= $manga->getImagem() ?>" class="img-fluid shadow-lg" alt="">
+            <img src="<?= PUBLIC_URL . $manga->getImagem() ?>" class="img-fluid shadow-lg" alt="">
             <!-- Fim Preview da Capa -->
             <hr>
             <!-- Criadores -->
@@ -32,7 +32,7 @@
                 ?>
                 <div class="p-0 criadores">
                     <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-autor">
-                        <img class="img-fluid rounded-circle me-3" src="<?= BASE_URL . '/' . $criador->getFotoPerfil() ?>"
+                        <img class="img-fluid rounded-circle me-3" src="<?= PUBLIC_URL . $criador->getFotoPerfil() ?>"
                             alt="" style="width: 50px; height: 50px; object-fit: cover;">
                         <div>
                             <p class="fw-bold mb-1 mb-0"><?= implode(' / ', $papeis) ?></p>
@@ -82,7 +82,7 @@
                 <ul id="categorias" class="d-flex m-0 p-0">
                     <?php foreach ($manga->getCategorias() as $cat): ?>
                         <li><a class="rounded-2 py-1 px-2"
-                                href="<?= BASE_URL ?>/manga/listar/<?= $cat->getId() ?>"><?= $cat->getNome() ?></a></li>
+                                href="<?= BASE_URL ?>manga/listar/<?= $cat->getId() ?>"><?= $cat->getNome() ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
@@ -94,7 +94,7 @@
                     <!-- Páginas -->
                     <div class="text-center py-2 px-3 rounded-2 me-3 info-block">
                         <p class="mb-0 fw-semibold">Páginas</p>
-                        <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/magazine.svg"
+                        <img class="img-fluid small-svg svg-invert my-1" src="<?= PUBLIC_URL ?>img/icons/magazine.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getPaginas() ?></p>
                     </div>
@@ -103,7 +103,7 @@
                     <!-- Editora -->
                     <div class="text-center py-2 px-3 me-3 rounded-2 info-block">
                         <p class="mb-0 fw-semibold">Editora</p>
-                        <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/building.svg"
+                        <img class="img-fluid small-svg svg-invert my-1" src="<?= PUBLIC_URL ?>img/icons/building.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getEditora() ?></p>
                     </div>
@@ -112,7 +112,7 @@
                     <!-- Faixa Etária -->
                     <div class="text-center py-2 px-3 me-3 rounded-2 info-block">
                         <p class="mb-0 fw-semibold">Faixa Etária</p>
-                        <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/warning.svg"
+                        <img class="img-fluid small-svg svg-invert my-1" src="<?= PUBLIC_URL ?>img/icons/warning.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getFaixaEtariaFormatada() ?></p>
                     </div>
@@ -121,7 +121,7 @@
                     <!-- Idioma -->
                     <div class="text-center py-2 px-3 me-3 rounded-2 info-block">
                         <p class="mb-0 fw-semibold">Idioma</p>
-                        <img class="img-fluid small-svg svg-invert my-1" src="<?= BASE_URL ?>/img/icons/translate.svg"
+                        <img class="img-fluid small-svg svg-invert my-1" src="<?= PUBLIC_URL ?>img/icons/translate.svg"
                             alt="">
                         <p class="mb-0"><?= $manga->getIdioma() ?></p>
                     </div>
@@ -143,7 +143,7 @@
                     <!-- Fim Linha Preço / Estoque -->
 
                     <!-- Form Carrinho -->
-                    <form action="<?= BASE_URL ?>/carrinho/adicionar" method="POST" class="d-flex w-100">
+                    <form action="<?= BASE_URL ?>carrinho/adicionar" method="POST" class="d-flex w-100">
                         <!-- Input oculto que envia o ID do mangá -->
                         <input type="hidden" name="id_manga" value="<?= $manga->getId() ?>">
 
@@ -161,7 +161,7 @@
                         <!-- Botão Adicionar ao Carrinho -->
                         <button type="submit"
                             class="btn btn-success d-inline-flex flex-grow-1 align-items-center justify-content-center gap-2 px-3 py-2">
-                            <img src="<?= BASE_URL ?>/img/icons/add-to-cart-3046.svg" alt="" class="icon-add-cart"
+                            <img src="<?= PUBLIC_URL ?>img/icons/add-to-cart-3046.svg" alt="" class="icon-add-cart"
                                 style="width: 20px; height: 20px;">
                             <span class="m-0 p-0 fw-semibold">Adicionar</span>
                         </button>

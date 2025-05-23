@@ -10,8 +10,8 @@ class CriadorController extends Controller {
     }
 
     public function cadastrar(): void {
-        $this->render("criador/cadastrar", ['css' => [BASE_URL . '/css/criador/cadastrar.css'],
-            'js' => [BASE_URL . '/js/criador/cadastrar.js']
+        $this->render("criador/cadastrar", ['css' => [PUBLIC_URL . '/css/criador/cadastrar.css'],
+            'js' => [PUBLIC_URL . '/js/criador/cadastrar.js']
         ]);
     }
 
@@ -77,7 +77,7 @@ class CriadorController extends Controller {
 
         // Redireciona
         $this->render("criador/listar", ['criadores' => $criadores, 
-            'css' => [BASE_URL . '/css/criador/listar.css'],
-            'js' => [BASE_URL . '/js/criador/listar.js']]);
+            'css' => [PUBLIC_URL . '/css/criador/listar.css'],
+            'js' => [PUBLIC_URL . '/js/criador/listar.js']]);
     }
 }
