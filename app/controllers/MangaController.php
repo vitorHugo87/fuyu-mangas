@@ -82,12 +82,12 @@ class MangaController extends Controller {
             $nomeArquivo = 'capa_' . time() . '_' . bin2hex(random_bytes(5)) . '.' . $extensao;
 
             // Define o caminho para salvar a imagem
-            $caminhoDestino = __DIR__ . '/../../public/img/capas/' . $nomeArquivo;
+            $caminhoDestino = ABSPATH . '/public/img/capas/' . $nomeArquivo;
 
             // Move o arquivo da pasta temporária para a pasta correta
             if (move_uploaded_file($arquivo['tmp_name'], $caminhoDestino)) {
                 // Caminho que será salvo no banco de dados (relativo ao site)
-                $dados['imagem'] = 'img/capas/' . $nomeArquivo;
+                $dados['imagem'] = "img/capas/$nomeArquivo";
             } else {
                 die('Ops! Tivemos um erro ao mover o arquivo de imagem..');
             }
@@ -110,7 +110,7 @@ class MangaController extends Controller {
     public function listar() {
         $mangas = $this->mangaDAO->listarTodosAtivos();
         $this->render("manga/listar", ["mangas" => $mangas,
-            "css" => [PUBLIC_URL . "/css/manga-listar.css"]]);
+            "css" => [PUBLIC_URL . "/css/manga/listar.css"]]);
     }
 
     public function detalhes($mangaId) {
@@ -123,7 +123,7 @@ class MangaController extends Controller {
         }
 
         $this->render("manga/detalhes", ["manga" => $manga,
-            "css" => [PUBLIC_URL . "/css/manga-detalhes.css"],
-            "js" => [PUBLIC_URL . "/js/manga-detalhes.js"]]);
+            "css" => [PUBLIC_URL . "/css/manga/detalhes.css"],
+            "js" => [PUBLIC_URL . "/js/manga/detalhes.js"]]);
     }
 }

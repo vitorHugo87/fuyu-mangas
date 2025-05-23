@@ -94,7 +94,7 @@
                         <!-- Conteúdo -->
                         <div class="p-2 d-grid">
                             <img id="profile-img-large" class="img-fluid rounded-circle p-2"
-                                src="../img/criadores_pfps/default_pfp.jpg" alt="">
+                                src="<?= PUBLIC_URL ?>img/criadores_pfps/default_pfp.webp" alt="">
                             <div class="d-flex mx-auto align-items-center">
                                 <img src="#" id="preview-flag" class="img-fluid rounded d-none me-2" alt="">
                                 <p id="preview-nome-large" class="fw-semibold fs-5 mb-0">Nome do Criador</p>
@@ -110,7 +110,7 @@
                 <div class="mx-auto p-0 w-50">
                     <a href="#" class="d-flex align-items-center p-2 text-decoration-none" id="link-criador">
                         <img id="profile-img-small" class="img-fluid rounded-circle me-3"
-                            src="../img/criadores_pfps/default_pfp.jpg" alt=""
+                            src="<?= PUBLIC_URL ?>img/criadores_pfps/default_pfp.webp" alt=""
                             style="width: 50px; height: 50px; object-fit: cover;">
                         <div>
                             <p class="fw-bold mb-1 mb-0">Criador</p>
