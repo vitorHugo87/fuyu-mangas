@@ -1,8 +1,9 @@
 <div class="container-md text-light">
-    <form id="form-cadastrar-criador" action="<?= BASE_URL ?>criador/salvar" method="POST" enctype="multipart/form-data">
+    <form id="form-cadastrar-criador" action="<?= BASE_URL ?>criador/salvar" method="POST"
+        enctype="multipart/form-data">
         <h2 class="mb-2">Cadastrar Criador</h2>
 
-        <div class="row">
+        <div class="row mb-3">
             <!-- Inputs -->
             <div class="col-md-6 left-side-container pe-4">
                 <div class="row">
@@ -83,23 +84,31 @@
 
             <!-- Previews -->
             <div class="col-md-6">
-                <!-- Preview Detalhado -->
-                <div class="mx-auto p-0 w-50 mb-5">
-                    <a href="#" class="d-block text-decoration-none position-relative" id="link-criador-large">
-                        <!-- Top 5 Absoluto -->
-                        <div class="destaque position-absolute top-0 start-0 px-2 py-1 rounded-bottom-right">
+                <div class="w-50 mx-auto mb-5 p-0">
+                    <!-- Preview Detalhado -->
+                    <a href="#" class="d-block text-decoration-none position-relative overflow-hidden shadow"
+                        id="link-criador">
+                        <!-- Top Absoluto -->
+                        <div class="destaque position-absolute top-0 start-0 px-2 py-1">
                             <p class="fw-semibold mb-0">Top 1</p>
                         </div>
-                        <!-- Fim Top 5 Absoluto -->
+                        <img src="#" id="preview-flag" class="img-fluid position-absolute top-0 end-0 d-none" alt="">
+                        <!-- Fim Top Absoluto -->
+
                         <!-- Conteúdo -->
                         <div class="p-2 d-grid">
-                            <img id="profile-img-large" class="img-fluid rounded-circle p-2"
+                            <img id="profile-img" class="img-fluid rounded-circle p-2"
                                 src="<?= PUBLIC_URL ?>img/criadores_pfps/default_pfp.webp" alt="">
-                            <div class="d-flex mx-auto align-items-center">
-                                <img src="#" id="preview-flag" class="img-fluid rounded d-none me-2" alt="">
-                                <p id="preview-nome-large" class="fw-semibold fs-5 mb-0">Nome do Criador</p>
+                            <div class="mx-auto text-center">
+                                <p id="preview-nome" class="fw-semibold fs-5 mb-0">Nome do Criador</p>
+
+                                <p class="m-0"><small>( Autor / Ilustrador )</small></p>
                             </div>
-                            <p class="mb-0 mx-auto">Coleção 1, Coleção 2, Coleção 3...</p>
+
+                            <p class="mb-0 mx-auto" id="colecao-rotativa"
+                                data-colecoes='["Slam Dunk", "One-Punch Man", "Initial D", "Death Note", "Attack on Titan", "Record of Ragnarok"]'>
+                                <!-- Aqui aparece dinamicamente as Coleções do Criador via JS -->
+                            </p>
                         </div>
                         <!-- Fim Conteúdo -->
                     </a>

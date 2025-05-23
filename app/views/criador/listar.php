@@ -10,6 +10,7 @@
                     $papeis[] = 'Autor';
                 if (in_array('Ilustrador', $p) && in_array('Capista', $p))
                     $papeis[] = 'Ilustrador';
+                if (empty($p)) $papeis[] = '-';
             ?>
 
             <div class="col-md-3">

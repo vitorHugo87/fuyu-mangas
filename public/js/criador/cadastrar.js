@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Preview da foto de perfil
     document.getElementById('imagem').addEventListener('change', function (event) {
         const input = event.target;
-        const previewLarge = document.getElementById('profile-img-large');
+        const previewLarge = document.getElementById('profile-img');
         const previewSmall = document.getElementById('profile-img-small');
 
         if (input.files && input.files[0]) {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Input do nome
     const inputNome = document.getElementById('nome');
-    const previewNomeLarge = document.getElementById('preview-nome-large');
+    const previewNomeLarge = document.getElementById('preview-nome');
     const previewNomeSmall = document.getElementById('preview-nome-small');
 
     inputNome.addEventListener('input', function () {
@@ -87,7 +87,7 @@ const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]
 const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
 // Valida os campos do formulário antes de enviar os dados
-document.getElementById("form-cadastrar-autor").addEventListener('submit', function (event) {
+document.getElementById("form-cadastrar-criador").addEventListener('submit', function (event) {
     // Impede o envio direto do formulário
     event.preventDefault();
 
@@ -172,4 +172,33 @@ document.getElementById("form-cadastrar-autor").addEventListener('submit', funct
     // Campos <Instagram / X (Twitter) / Site Oficial> são opcionais
     // Envia o formulário se todos os campos estejam preenchidos corretamente
     event.target.submit();
+});
+
+// Realiza a transição de coleções no Preview Detalhado
+document.addEventListener('DOMContentLoaded', () => {
+    const texto = document.getElementById('colecao-rotativa');
+
+    const colecoes = JSON.parse(texto.dataset.colecoes);
+
+    if (!colecoes || colecoes.length === 0) return;
+
+    let index = 0;
+
+    // Função que troca o texto com fade
+    const trocarColecao = () => {
+        texto.classList.add('fade-out');
+
+        setTimeout(() => {
+            texto.textContent = colecoes[index];
+            texto.classList.remove('fade-out');
+            index = (index + 1) % colecoes.length;
+        }, 500); // Tempo do fade-out (em ms)
+    };
+
+    // Começa mostrando  oprimeiro
+    texto.textContent = colecoes[0];
+    index++;
+
+    // Troca a cada 3 segundos
+    setInterval(trocarColecao, 3000);
 });

@@ -27,41 +27,45 @@
     box-shadow: 0px 0px 5px .25rem var(--caramelo-brilho);
 }
 
-#link-criador, #link-criador-large {
+#link-criador {
     background-color: rgba(79, 92, 122, 0.3);
     color: var(--caramelo-brilho);
     border-radius: var(--bs-border-radius);
     transition: 0.5s;
 }
 
-#link-criador:hover, #link-criador-large:hover {
+#link-criador:hover {
     background-color: rgba(79, 92, 122, 0.5);
     color: var(--caramelo-brilho-hover);
     border-radius: 0px;
 }
 
-#link-criador-large .destaque {
+#link-criador .destaque {
     background-color: var(--caramelo-brilho);
     color: var(--cinza-noturno);
+    border-bottom-right-radius: 0.50rem;
     transition: 0.5s;
 }
 
-#link-criador-large:hover .destaque {
+#link-criador:hover .destaque {
     background-color: var(--caramelo-brilho-hover);
 }
 
-.rounded-bottom-right {
-    border-top-left-radius: var(--bs-border-radius);
-    border-bottom-right-radius: var(--bs-border-radius);
-}
-
-#link-criador-large:hover .rounded-bottom-right {
-    border-top-left-radius: 0px
-}
-
 #preview-flag {
-    height: 1.25rem;
-    width: 1.875rem;
+    height: 1.75rem;
+    width: 2.5rem;
+    border-bottom-left-radius: 0.50rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+#colecao-rotativa {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#colecao-rotativa.fade-out {
+    opacity: 0;
 }
 
 .btn-caramelo {
